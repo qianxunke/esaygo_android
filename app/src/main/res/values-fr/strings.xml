@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">FtlExpressPDA</string>
+    <string name="app_name">EsayGo</string>
     <string name="setting">Paramètrage</string>
-    <string name="FaxiangExpress">FtlExpress</string>
+    <string name="FaxiangExpress">EsayGo</string>
     <string name="up_notify_downloding">Téléchargement en cours</string>
     <string name="up_notify_new_version">Mise à jour disponible</string>
     <string name="up_notify_down_loding">Téléchargement...</string>

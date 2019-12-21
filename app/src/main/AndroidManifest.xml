@@ -22,7 +22,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".module.main.views.MainActivity">
+        <activity android:name=".module.main.views.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,7 +41,7 @@
             android:name=".module.user.view.RegisterActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".module.main.views.SplashActivity"
+            android:name=".module.main.views.MainActivity"
             android:screenOrientation="portrait" />
 
 

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">EsayGo</string>
     <string name="setting">Setting</string>
-    <string name="FaxiangExpress">FtlExpress</string>
+    <string name="FaxiangExpress">EsayGo</string>
     <string name="up_notify_downloding">Download, please wait</string>
     <string name="up_notify_new_version">new version</string>
     <string name="up_notify_down_loding">downloading...</string>
