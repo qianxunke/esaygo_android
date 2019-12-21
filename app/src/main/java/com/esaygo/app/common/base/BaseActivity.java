@@ -236,7 +236,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
      * 初始化Toolbar
      */
     protected void initToolbar() {
-        if (mBack) mToolbar.setNavigationIcon(R.mipmap.black_return);
+        if (mBack) mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_grey_700_24dp);
         mToolbar.setTitle("");
     }
 

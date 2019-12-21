@@ -61,6 +61,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     HomeFragment homeFragment;
     BookFragment bookFragment;
     MeFragment meFragment;
+
     @Override
     protected void initInject() {
         getActivityComponent().inject(this);
@@ -87,7 +88,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     protected void loadData() {
         super.loadData();
 
-     //   mPresenter.doneUpdate("1.0.0");
+        //   mPresenter.doneUpdate("1.0.0");
     }
 
     @Override
@@ -105,30 +106,35 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     }
 
 
-
-
     private void initTableView() {
         homeFragment = HomeFragment.getInstance("首页");
         bookFragment = BookFragment.getInstance("抢票");
-        meFragment=MeFragment.getInstance("我的");
+        meFragment = MeFragment.getInstance("我的");
         List<TabViewChild> tabViewChildList = new ArrayList<>();
-        TabViewChild tabViewChild01 = new TabViewChild(R.mipmap.ic_launcher, R.mipmap.ic_launcher, "首页", homeFragment);
-        TabViewChild tabViewChild02 = new TabViewChild(R.mipmap.ic_launcher, R.mipmap.ic_launcher, "抢票", bookFragment);
-        TabViewChild tabViewChild03 = new TabViewChild(R.mipmap.ic_launcher, R.mipmap.ic_launcher, "我的", meFragment);
+        TabViewChild tabViewChild01 = new TabViewChild(R.drawable.ic_home_orange_36dp, R.drawable.ic_home_grey_500_36dp, "首页", homeFragment);
+        TabViewChild tabViewChild02 = new TabViewChild(R.drawable.ic_hourglass_empty_orange_36dp, R.drawable.ic_hourglass_empty_grey_500_36dp, "抢票", bookFragment);
+        TabViewChild tabViewChild03 = new TabViewChild(R.drawable.ic_person_outline_orange_36dp, R.drawable.ic_person_outline_grey_500_36dp, "我的", meFragment);
         tabViewChildList.add(tabViewChild01);
         tabViewChildList.add(tabViewChild02);
         tabViewChildList.add(tabViewChild03);
         tabView.setTextViewSelectedColor(getResources().getColor(R.color.main_color));
         tabView.setTextViewUnSelectedColor(getResources().getColor(R.color.text_66));
         tabView.setTabViewBackgroundColor(getResources().getColor(R.color.white));
-        tabView.setTabViewHeight(50);
+        tabView.setTabViewHeight(48);
         tabView.setImageViewTextViewMargin(4);
-        tabView.setTextViewSize(13);
-        tabView.setImageViewWidth(60);
-        tabView.setImageViewHeight(60);
+        tabView.setTextViewSize(12);
+        tabView.setImageViewWidth(dip2px(24));
+        tabView.setImageViewHeight(dip2px(24));
         tabView.setTabViewGravity(Gravity.TOP);
         tabView.setTabViewChild(tabViewChildList, getSupportFragmentManager());
         tabView.setTabViewDefaultPosition(0);
+
+
+    }
+
+    public int dip2px(float dpValue) {
+        final float scale = getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
     }
 
 
@@ -161,7 +167,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     public void showModules(List<FeatureItem> featureItems) {
 
     }
-
 
 
 }

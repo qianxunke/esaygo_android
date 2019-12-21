@@ -4,6 +4,9 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.FrameLayout;
@@ -221,6 +224,13 @@ public class HomeFragment extends ImBaseFragment implements CalendarView.OnCalen
                 endCity = city;
                 tx_start_station.setText(startCity.getName());
                 tx_end_station.setText(endCity.getName());
+                // 添加动画
+                Animation circle_anim = AnimationUtils.loadAnimation(mContext, R.anim.anim_rorate);
+                LinearInterpolator interpolator = new LinearInterpolator();  //设置匀速旋转，在xml文件中设置会出现卡顿
+                circle_anim.setInterpolator(interpolator);
+                if (circle_anim != null) {
+                    im_address_change.startAnimation(circle_anim);  //开始动画
+                }
             }
         });
 

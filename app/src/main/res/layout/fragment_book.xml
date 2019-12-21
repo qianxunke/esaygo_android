@@ -2,12 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:ignore="RtlHardcoded,HardcodedText,RtlSymmetry,SmallSp">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
-    <include layout="@layout/common_title"/>
+    <View
+        android:id="@+id/fillStatusBarView"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:background="@color/white_80" />
+
+    <include layout="@layout/common_title" />
+
     <com.scwang.smart.refresh.layout.SmartRefreshLayout
         android:id="@+id/refreshLayout"
         android:layout_width="match_parent"

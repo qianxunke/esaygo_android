@@ -2,36 +2,39 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:ignore="RtlHardcoded,HardcodedText,RtlSymmetry,SmallSp">
 
-    <include layout="@layout/common_title"/>
+    <View
+        android:id="@+id/fillStatusBarView"
+        android:layout_width="match_parent"
+        android:layout_height="24dp" />
+
+    <include layout="@layout/common_title" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:background="@color/text_fa"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/text_fa">
 
 
         <TextView
             android:id="@+id/txt_go"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginLeft="35dp"
             android:layout_alignParentBottom="true"
+            android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
             android:layout_marginBottom="@dimen/dp30"
-            android:background="@mipmap/yaunjiao_bg"
+            android:background="@drawable/bg_login_btn"
             android:gravity="center"
             android:text="退出登陆"
             android:textColor="@color/white" />
 
 
-
     </RelativeLayout>
-
 
 
 </LinearLayout>

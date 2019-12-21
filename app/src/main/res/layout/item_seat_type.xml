@@ -4,17 +4,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/dp50"
-    app:cardCornerRadius="@dimen/dp5"
-    app:cardElevation="@dimen/dp0"
-    android:layout_marginStart="@dimen/dp5"
-    android:layout_marginEnd="@dimen/dp5"
-    android:layout_marginTop="@dimen/dp3"
-    android:layout_marginBottom="3dp">
+    android:layout_marginStart="@dimen/dp8"
+    android:layout_marginTop="@dimen/dp2"
+    android:layout_marginEnd="@dimen/dp8"
+    android:layout_marginBottom="2dp"
+    app:cardCornerRadius="@dimen/dp4"
+    app:cardElevation="@dimen/dp0">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/dp8"
+        android:layout_marginEnd="@dimen/dp8"
+        >
 
         <RelativeLayout
             android:layout_width="0dp"
@@ -27,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/dp10"
+                android:layout_marginStart="@dimen/dp16"
                 android:text="一等座"
                 android:textColor="@color/text_33"
                 android:textSize="@dimen/sp_14" />
@@ -37,8 +40,8 @@
 
         <ImageView
             android:id="@+id/iv_choose"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:layout_gravity="center_vertical"
             android:padding="10dp"
             android:src="@drawable/bg_choose_selector" />

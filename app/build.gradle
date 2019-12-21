@@ -113,7 +113,7 @@ dependencies {
     implementation project(path: ':date-library')
 
     //必须使用
-    compile 'com.lzy.net:okgo:3.0.4'
+    implementation 'com.lzy.net:okgo:3.0.4'
 
     implementation 'com.alibaba:fastjson:1.1.71.android'
 }

@@ -6,7 +6,8 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <include layout="@layout/common_title" />
+    <include layout="@layout/common_title"
+        />
 
     <com.esaygo.app.utils.views.BounceScrollView
         android:layout_width="match_parent"
@@ -22,7 +23,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="@dimen/dp5"
+                app:cardCornerRadius="@dimen/dp8"
                 app:cardElevation="@dimen/dp0"
                 android:layout_marginTop="@dimen/dp10"
                 android:layout_marginStart="@dimen/dp10"
@@ -39,7 +40,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dp20"
-                        android:layout_marginTop="@dimen/dp10"
+                        android:layout_marginTop="@dimen/dp16"
                         android:orientation="horizontal">
 
                         <TextView
@@ -79,6 +80,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:layout_weight="1"
                                 android:text="北京"
+                                android:textStyle="bold"
                                 android:textColor="@color/black_80"
                                 android:textSize="@dimen/sp_16" />
                         </LinearLayout>
@@ -112,6 +114,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:gravity="end"
                                 android:text="上海"
+                                android:textStyle="bold"
                                 android:textColor="@color/black_80"
                                 android:textSize="@dimen/sp_16" />
                         </LinearLayout>
@@ -123,7 +126,7 @@
                         android:layout_marginStart="@dimen/dp5"
                         android:layout_marginTop="@dimen/dp10"
                         android:layout_marginEnd="@dimen/dp5"
-                        android:background="@color/text_f6" />
+                        android:background="@color/text_cd" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -176,7 +179,7 @@
                         android:layout_marginStart="@dimen/dp5"
                         android:layout_marginTop="@dimen/dp10"
                         android:layout_marginEnd="@dimen/dp5"
-                        android:background="@color/text_99" />
+                        android:background="@color/text_cd" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -229,7 +232,7 @@
                         android:layout_marginStart="@dimen/dp5"
                         android:layout_marginTop="@dimen/dp10"
                         android:layout_marginEnd="@dimen/dp5"
-                        android:background="@color/text_99" />
+                        android:background="@color/text_cd" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -282,12 +285,13 @@
                         android:layout_marginStart="@dimen/dp5"
                         android:layout_marginTop="@dimen/dp10"
                         android:layout_marginEnd="@dimen/dp5"
-                        android:background="@color/text_99" />
+                        android:background="@color/text_cd" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dp10"
+                        android:layout_marginBottom="@dimen/dp10"
                         android:orientation="horizontal">
 
 

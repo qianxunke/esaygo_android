@@ -1,6 +1,8 @@
 package com.esaygo.app.module.main.views;
 
 import android.os.Bundle;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -38,6 +40,8 @@ public class BookFragment extends ImBaseFragment {
     SmartRefreshLayout refreshLayout;
     @BindView(R.id.title)
     TextView title;
+    @BindView(R.id.fillStatusBarView)
+    View statusBarView;
 
     List<TaskDetails> taskDetailsList;
     TaskAdapter taskAdapter;
@@ -95,8 +99,8 @@ public class BookFragment extends ImBaseFragment {
     }
 
     public void loadData() {
-        HttpHeaders httpHeaders=new HttpHeaders();
-        httpHeaders.put("Authorization",UserModel.getCurrentUser().getToken());
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.put("Authorization", UserModel.getCurrentUser().getToken());
         OkGo.<String>get(ApiConstants.API_BASE_URL + "book/task/userList")
                 .headers(httpHeaders)
                 .execute(new StringCallback() {

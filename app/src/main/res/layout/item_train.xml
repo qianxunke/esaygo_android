@@ -9,25 +9,25 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="@dimen/dp5"
-        app:cardElevation="0dp"
-        android:layout_marginStart="@dimen/dp10"
-        android:layout_marginEnd="@dimen/dp10"
-        android:layout_marginTop="@dimen/dp5"
-        android:layout_marginBottom="@dimen/dp5"
+        android:layout_marginStart="@dimen/dp8"
+        android:layout_marginTop="@dimen/dp4"
+        android:layout_marginEnd="@dimen/dp8"
+        android:layout_marginBottom="@dimen/dp4"
+        app:cardCornerRadius="@dimen/dp8"
+        app:cardElevation="1dp"
         app:contentPadding="@dimen/dp5">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingStart="@dimen/dp10"
-            android:paddingRight="@dimen/dp10">
+            android:paddingStart="@dimen/dp16"
+            android:paddingEnd="@dimen/dp16">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp50"
+                android:layout_height="@dimen/dp48"
                 android:orientation="horizontal"
                 android:weightSum="4">
 
@@ -52,7 +52,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dp3"
                         android:text="杭州东"
-                        android:textSize="@dimen/sp_13" />
+                        android:textSize="@dimen/sp_16" />
 
 
                 </LinearLayout>
@@ -94,70 +94,72 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical">
-                  <RelativeLayout
-                      android:layout_width="match_parent"
-                      android:layout_height="@dimen/dp30">
-                    <TextView
-                        android:id="@+id/tx_item_train_end_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="00:58"
-                        android:layout_gravity="center_horizontal"
-                        android:textColor="@color/main_color"
-                        android:textSize="@dimen/sp_16"
-                        android:layout_centerHorizontal="true"
-                        android:textStyle="bold" />
-                      <TextView
-                          android:id="@+id/tx_item_train_spend_days"
-                          android:layout_width="wrap_content"
-                          android:text="+1"
-                          android:textSize="@dimen/sp_10"
-                          android:layout_marginEnd="@dimen/dp10"
-                          android:textColor="@color/blue"
-                          android:layout_alignParentEnd="true"
-                          android:layout_height="wrap_content"/>
-                  </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tx_item_train_end_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center_horizontal"
+                            android:text="00:58"
+                            android:textColor="@color/main_color"
+                            android:textSize="@dimen/sp_16"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tx_item_train_spend_days"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/dp10"
+                            android:text="+1"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/sp_10" />
+                    </RelativeLayout>
 
                     <TextView
                         android:id="@+id/tx_item_train_end_station"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/dp3"
                         android:text="贵阳"
-                        android:layout_gravity="center_horizontal"
-                        android:textSize="@dimen/sp_13" />
+                        android:textSize="@dimen/sp_16" />
 
 
                 </LinearLayout>
+
                 <LinearLayout
-                    android:visibility="gone"
                     android:layout_width="@dimen/dp0"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="¥"
                         android:layout_marginTop="@dimen/dp10"
+                        android:text="¥"
                         android:textColor="@color/main_color"
-                        android:textSize="@dimen/sp_10"
-                        />
+                        android:textSize="@dimen/sp_10" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dp10"
                         android:text="000.00"
-                        android:textStyle="bold"
                         android:textColor="@color/red"
-                        android:textSize="@dimen/sp_15" />
+                        android:textSize="@dimen/sp_15"
+                        android:textStyle="bold" />
 
 
                 </LinearLayout>
-
 
 
             </LinearLayout>
@@ -165,39 +167,43 @@
             <LinearLayout
                 android:id="@+id/ll_item_manche"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp20"
+                android:layout_height="@dimen/dp16"
                 android:orientation="horizontal"
                 android:weightSum="4">
+
                 <TextView
                     android:id="@+id/tx_item_train_yingzuo"
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp3"
+                    android:layout_weight="1"
                     android:text="硬座有票"
                     android:textSize="@dimen/sp_11" />
+
                 <TextView
                     android:id="@+id/tx_item_train_yingwo"
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp3"
+                    android:layout_weight="1"
                     android:text="硬卧有票"
                     android:textSize="@dimen/sp_11" />
+
                 <TextView
                     android:id="@+id/tx_item_train_ruanwo"
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp3"
+                    android:layout_weight="1"
                     android:text="软卧6张"
                     android:textSize="@dimen/sp_11" />
+
                 <TextView
                     android:id="@+id/tx_item_train_wuzuo"
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp3"
+                    android:layout_weight="1"
                     android:text="无座有票"
                     android:textSize="@dimen/sp_11" />
 
@@ -205,37 +211,39 @@
             </LinearLayout>
 
             <LinearLayout
-                android:visibility="gone"
                 android:id="@+id/ll_item_gaotie"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp20"
                 android:orientation="horizontal"
+                android:visibility="gone"
                 android:weightSum="4">
+
                 <TextView
                     android:id="@+id/tx_item_train_erdengzuo"
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp3"
+                    android:layout_weight="1"
                     android:text="二等座有票"
                     android:textSize="@dimen/sp_11" />
+
                 <TextView
                     android:id="@+id/tx_item_train_yidengzuo"
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp3"
+                    android:layout_weight="1"
                     android:text="一等座有票"
                     android:textSize="@dimen/sp_11" />
+
                 <TextView
                     android:id="@+id/tx_item_train_shangwuzuo"
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp3"
+                    android:layout_weight="1"
                     android:text="商务座"
                     android:textSize="@dimen/sp_11" />
-
 
 
             </LinearLayout>

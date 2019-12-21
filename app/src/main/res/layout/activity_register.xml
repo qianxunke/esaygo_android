@@ -68,7 +68,7 @@
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:padding="10dp"
-                android:src="@mipmap/sjdl" />
+                android:src="@drawable/ic_phone_iphone_grey_400_24dp" />
 
             <EditText
                 android:id="@+id/et_phone"
@@ -99,7 +99,7 @@
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:padding="10dp"
-                android:src="@mipmap/ico_login_code" />
+                android:src="@drawable/ic_person_outline_grey_400_24dp" />
 
             <EditText
                 android:id="@+id/et_invite_code"
@@ -140,7 +140,7 @@
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:padding="10dp"
-                android:src="@mipmap/ico_login_code" />
+                android:src="@drawable/ic_message_grey_400_24dp" />
 
             <EditText
                 android:id="@+id/et_code"

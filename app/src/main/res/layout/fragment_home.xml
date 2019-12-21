@@ -140,7 +140,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="@dimen/dp5"
-                app:cardElevation="@dimen/dp0"
+                app:cardElevation="@dimen/dp1"
                 android:layout_marginStart="@dimen/dp10"
                 android:layout_marginEnd="@dimen/dp10"
                 android:layout_marginTop="@dimen/dp5"

@@ -152,6 +152,10 @@ public class TicketActivity extends BaseActivity<TicketPresenter> implements Tic
             tx_train_trips.setText(trips);
         }
 
+        if (!selectDates.equals("")) {
+            tx_train_dates.setText(selectDates);
+        }
+
 
     }
 
@@ -289,6 +293,7 @@ public class TicketActivity extends BaseActivity<TicketPresenter> implements Tic
         if (requestCode == GETSELECT_DATES_REQUEST && resultCode == GETSELECT_DATES_RESPONSE) {
             String da = data.getStringExtra("dates");
             if (da != null && !da.isEmpty()) {
+                System.out.println("传回了" + da);
                 selectDates = da;
                 tx_train_dates.setText(selectDates);
             }
@@ -559,7 +564,7 @@ public class TicketActivity extends BaseActivity<TicketPresenter> implements Tic
 
                     }
                 })
-                .setMargin(10)
+                .setMargin(16)
                 .setOutCancel(false)
                 .show(getSupportFragmentManager());
     }

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.esaygo.app.R;
 import com.esaygo.app.common.base.BaseActivity;
 import com.esaygo.app.module.main.presenter.MainPresenter;
+import com.esaygo.app.utils.ToastUtils;
 import com.esaygo.app.utils.views.group.GroupRecyclerView;
 import com.haibin.calendarview.Calendar;
 import com.haibin.calendarview.CalendarLayout;
@@ -28,7 +29,7 @@ import butterknife.BindView;
 
 
 public class DataChooiseActivity extends BaseActivity<MainPresenter> implements CalendarView.OnCalendarSelectListener,
-        CalendarView.OnYearChangeListener{
+        CalendarView.OnCalendarInterceptListener, CalendarView.OnYearChangeListener {
 
 
     TextView mTextMonthDay;
@@ -46,6 +47,8 @@ public class DataChooiseActivity extends BaseActivity<MainPresenter> implements 
     CalendarLayout mCalendarLayout;
 //    GroupRecyclerView mRecyclerView;
 
+    private static final long ONE_DAY = 1000 * 3600 * 24;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_date_chooise;
@@ -53,7 +56,7 @@ public class DataChooiseActivity extends BaseActivity<MainPresenter> implements 
 
     @Override
     protected void initToolbar() {
-        mBack=true;
+        mBack = true;
         super.initToolbar();
         titleText.setText("请选择日期");
     }
@@ -95,6 +98,8 @@ public class DataChooiseActivity extends BaseActivity<MainPresenter> implements 
         mCalendarLayout = findViewById(R.id.calendarLayout);
         mCalendarView.setOnCalendarSelectListener(this);
         mCalendarView.setOnYearChangeListener(this);
+        //TODO check, 设置日期拦截事件 --> 无效
+        mCalendarView.setOnCalendarInterceptListener(this);
         mTextYear.setText(String.valueOf(mCalendarView.getCurYear()));
         mYear = mCalendarView.getCurYear();
         mTextMonthDay.setText(mCalendarView.getCurMonth() + "月" + mCalendarView.getCurDay() + "日");
@@ -128,11 +133,11 @@ public class DataChooiseActivity extends BaseActivity<MainPresenter> implements 
         mCalendarView.setSchemeDate(map);
 
 
-    //    mRecyclerView = findViewById(R.id.recyclerView);
-     //   mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-     //   mRecyclerView.addItemDecoration(new GroupItemDecoration<String, Article>());
-     //   mRecyclerView.setAdapter(new ArticleAdapter(this));
-    //    mRecyclerView.notifyDataSetChanged();
+        //    mRecyclerView = findViewById(R.id.recyclerView);
+        //   mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //   mRecyclerView.addItemDecoration(new GroupItemDecoration<String, Article>());
+        //   mRecyclerView.setAdapter(new ArticleAdapter(this));
+        //    mRecyclerView.notifyDataSetChanged();
     }
 
     private Calendar getSchemeCalendar(int year, int month, int day, int color, String text) {
@@ -170,4 +175,44 @@ public class DataChooiseActivity extends BaseActivity<MainPresenter> implements 
         mTextMonthDay.setText(String.valueOf(year));
     }
 
+    /**
+     * 屏蔽某些不可点击的日期，可根据自己的业务自行修改
+     * 如 calendar > 2018年1月1日 && calendar <= 2020年12月31日
+     *
+     * @param calendar calendar
+     * @return 是否屏蔽某些不可点击的日期，MonthView和WeekView有类似的API可调用
+     */
+    @Override
+    public boolean onCalendarIntercept(Calendar calendar) {
+        //Log.e("onCalendarIntercept", calendar.toString());
+        String cM = calendar.getMonth() < 10 ? ("0" + calendar.getMonth()) : calendar.getMonth() + "";
+        String cD = calendar.getDay() < 10 ? ("0" + calendar.getDay()) : calendar.getDay() + "";
+        String uM = mCalendarView.getCurMonth() < 10 ? ("0" + mCalendarView.getCurMonth()) : mCalendarView.getCurMonth() + "";
+        String uD = mCalendarView.getCurDay() < 10 ? ("0" + mCalendarView.getCurDay()) : mCalendarView.getCurDay() + "";
+
+        String s1 = calendar.getYear() + cM + cD;
+        String s2 = mCalendarView.getCurYear() + "" + uM + uD;
+        if (s1.compareTo(s2) < 0) {
+            return true;  //不可选
+        }
+        java.util.Calendar date = java.util.Calendar.getInstance();
+
+        date.set(calendar.getYear(), calendar.getMonth() - 1, calendar.getDay());//
+
+        long startTimeMills = date.getTimeInMillis();//获得起始时间戳
+
+        date.set(mCalendarView.getCurYear(), mCalendarView.getCurMonth() - 1, mCalendarView.getCurDay());//
+
+        long endTimeMills = date.getTimeInMillis();//获得结束时间戳
+
+        if ((int) ((startTimeMills - endTimeMills) / ONE_DAY) > 60) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void onCalendarInterceptClick(Calendar calendar, boolean isClick) {
+        ToastUtils.showWarningToast("该日期不可选择");
+    }
 }

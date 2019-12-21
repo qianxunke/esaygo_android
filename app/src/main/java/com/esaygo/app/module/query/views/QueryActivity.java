@@ -18,6 +18,7 @@ import com.esaygo.app.module.query.contract.QueryContract;
 import com.esaygo.app.module.query.modle.TrainBean;
 import com.esaygo.app.module.query.presenter.QueryPresenter;
 import com.esaygo.app.module.ticket.views.TicketActivity;
+import com.esaygo.app.utils.ToastUtils;
 import com.esaygo.app.utils.network.common.HttpResponseBase;
 import com.gyf.immersionbar.ImmersionBar;
 import com.haibin.calendarview.Calendar;
@@ -265,6 +266,9 @@ public class QueryActivity extends BaseActivity<QueryPresenter> implements Query
     public void onCalendarSelect(Calendar calendar, boolean isClick) {
         if (isClick) {
             goTime = calendar.getYear() + "-" + calendar.getMonth() + "-" + calendar.getDay();
+            // 设置日期更新
+            tv_current_day.setText(String.valueOf(calendar.getDay()));
+            // TODO check, 感觉没有重新请求,并加载数据
             loadData();
             if (mCalendarView.getVisibility() == View.GONE) {
                 mCalendarView.setVisibility(View.VISIBLE);
