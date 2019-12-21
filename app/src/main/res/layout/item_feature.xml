@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_marginTop="@dimen/dp15"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_height="@dimen/dp80">
+
+
+        <ImageView
+            android:id="@+id/img_feature"
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp5"
+             />
+
+        <TextView
+            android:id="@+id/tx_feature_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_feature"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp1"
+            android:textSize="@dimen/sp_15"
+            android:text="待取件" />
+
+        <TextView
+            android:id="@+id/tx_feature_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/img_feature"
+            android:background="@drawable/bg_mine_refund_number"
+            android:paddingLeft="@dimen/dp5"
+            android:paddingRight="@dimen/dp5"
+            android:text="10"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_12" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

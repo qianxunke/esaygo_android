@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/common_title" />
+
+    <com.esaygo.app.utils.views.BounceScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/text_f6">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/dp5"
+                app:cardElevation="@dimen/dp0"
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_marginStart="@dimen/dp10"
+                android:layout_marginEnd="@dimen/dp10"
+                app:contentPadding="@dimen/dp5">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/dp20"
+                    android:paddingRight="@dimen/dp20">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp20"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="请认真核对一下信息..."
+                            android:textColor="@color/main_color"
+                            android:textSize="@dimen/sp_14" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp40"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:layout_width="@dimen/dp0"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:text="出发地"
+                                android:textColor="@color/text_66"
+                                android:textSize="@dimen/sp_11" />
+
+                            <TextView
+                                android:id="@+id/tx_start_station"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:text="北京"
+                                android:textColor="@color/black_80"
+                                android:textSize="@dimen/sp_16" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/im_address_change"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:src="@mipmap/change" />
+
+                        <LinearLayout
+                            android:layout_width="@dimen/dp0"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="end"
+                                android:text="目的地"
+                                android:textColor="@color/text_66"
+                                android:textSize="@dimen/sp_11" />
+
+                            <TextView
+                                android:id="@+id/tx_end_station"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="end"
+                                android:text="上海"
+                                android:textColor="@color/black_80"
+                                android:textSize="@dimen/sp_16" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginStart="@dimen/dp5"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:layout_marginEnd="@dimen/dp5"
+                        android:background="@color/text_f6" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp40"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginTop="@dimen/dp5"
+                            android:gravity="end"
+                            android:text="出发日期"
+                            android:textColor="@color/text_66"
+                            android:textSize="@dimen/sp_14" />
+
+                        <TextView
+                            android:id="@+id/tx_train_dates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/dp10"
+                            android:layout_marginTop="@dimen/dp5"
+                            android:text=""
+                            android:textColor="@color/black_80"
+                            android:textSize="@dimen/sp_14" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/dp1"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/tx_select_dates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/dp10"
+                            android:layout_marginTop="@dimen/dp6"
+                            android:drawableEnd="@mipmap/right_arrow"
+                            android:drawablePadding="@dimen/dp5"
+                            android:text="多选"
+                            android:textColor="@color/text_66"
+                            android:textSize="@dimen/sp_13" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginStart="@dimen/dp5"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:layout_marginEnd="@dimen/dp5"
+                        android:background="@color/text_99" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp40"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginTop="@dimen/dp5"
+                            android:gravity="end"
+                            android:text="指定车次"
+                            android:textColor="@color/text_66"
+                            android:textSize="@dimen/sp_14" />
+
+                        <TextView
+                            android:id="@+id/tx_train_trips"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/dp10"
+                            android:layout_marginTop="@dimen/dp5"
+                            android:text=""
+                            android:textColor="@color/black_80"
+                            android:textSize="@dimen/sp_14" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/dp1"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/tx_select_trips"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/dp10"
+                            android:layout_marginTop="@dimen/dp6"
+                            android:drawableEnd="@mipmap/right_arrow"
+                            android:drawablePadding="@dimen/dp5"
+                            android:text="多选"
+                            android:textColor="@color/text_66"
+                            android:textSize="@dimen/sp_13" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginStart="@dimen/dp5"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:layout_marginEnd="@dimen/dp5"
+                        android:background="@color/text_99" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp40"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginTop="@dimen/dp5"
+                            android:gravity="end"
+                            android:text="指定座席"
+                            android:textColor="@color/text_66"
+                            android:textSize="@dimen/sp_14" />
+
+                        <TextView
+                            android:id="@+id/tx_train_seat_types"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/dp10"
+                            android:layout_marginTop="@dimen/dp5"
+                            android:text=""
+                            android:textColor="@color/black_80"
+                            android:textSize="@dimen/sp_14" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/dp1"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/tx_select_seat_types"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/dp10"
+                            android:layout_marginTop="@dimen/dp6"
+                            android:drawableEnd="@mipmap/right_arrow"
+                            android:drawablePadding="@dimen/dp5"
+                            android:text="多选"
+                            android:textColor="@color/text_66"
+                            android:textSize="@dimen/sp_13" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginStart="@dimen/dp5"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:layout_marginEnd="@dimen/dp5"
+                        android:background="@color/text_99" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:orientation="horizontal">
+
+
+                        <CheckBox
+                            android:id="@+id/cb_scan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:button="@null"
+                            android:checked="true"
+                            android:drawableEnd="@drawable/bg_choose_checkbox"
+                            android:drawablePadding="10dp"
+                            android:padding="4dp"
+                            android:text="普通票"
+                            android:textColor="@color/text_66"
+                            android:textSize="14sp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal" />
+
+                        <CheckBox
+                            android:id="@+id/cb_chooise"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/cb_scan"
+                            android:button="@null"
+                            android:checked="false"
+                            android:drawableEnd="@drawable/bg_choose_checkbox"
+                            android:drawablePadding="10dp"
+                            android:enabled="true"
+                            android:padding="4dp"
+                            android:text="学生票"
+                            android:textColor="@color/text_66"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/dp5"
+                app:cardElevation="0dp"
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_marginStart="@dimen/dp10"
+                android:layout_marginEnd="@dimen/dp10"
+                app:contentPadding="@dimen/dp5">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/dp10"
+                    android:paddingEnd="@dimen/dp10">
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_marginTop="@dimen/dp10"
+                        android:id="@+id/recyclerView"
+                        android:background="@color/text_f6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/txt_add_presenter"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="35dp"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:layout_marginRight="35dp"
+                        android:layout_marginBottom="@dimen/dp5"
+                        android:background="@drawable/bg_bianyuan"
+                        android:gravity="center"
+                        android:text="+添加联系人"
+                        android:textColor="@color/main_color" />
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:id="@+id/txt_go"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginRight="35dp"
+                android:layout_marginBottom="@dimen/dp50"
+                android:background="@drawable/bg_login_btn"
+                android:gravity="center"
+                android:text="开始抢票"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </com.esaygo.app.utils.views.BounceScrollView>
+</LinearLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_marginTop="@dimen/dp25"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:background="@color/transparent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text=""
+            android:textColor="@color/black_80"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/right_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text=""
+            android:textColor="@color/black_80"
+            android:textSize="18sp"
+            android:visibility="gone" />
+
+        <com.esaygo.app.utils.views.PopSpinnerView
+            android:id="@+id/psv_fruit"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right"
+            android:layout_marginEnd="@dimen/dp5"
+            android:gravity="center"
+            android:visibility="gone"
+            app:textName="" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@mipmap/xu_line" />
+</LinearLayout>

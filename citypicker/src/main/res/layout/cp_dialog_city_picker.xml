@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical">
+
+    <include layout="@layout/cp_search_view" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cp_city_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"/>
+
+        <TextView
+            android:id="@+id/cp_overlay"
+            android:layout_width="@dimen/cp_overlay_width"
+            android:layout_height="@dimen/cp_overlay_height"
+            android:visibility="gone"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/cp_overlay_text_size"
+            android:textColor="@android:color/white"
+            android:background="@drawable/cp_overlay_bg"/>
+
+        <!--右侧字母导航-->
+        <com.zaaach.citypicker.view.SideIndexBar
+            android:id="@+id/cp_side_index_bar"
+            android:layout_width="@dimen/cp_index_bar_width"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
+
+        <include layout="@layout/cp_empty_view"/>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.esaygo.app">
+    <!-- 联网 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 使用存储卡 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <application
+        android:name=".PdaApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".module.main.views.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".module.user.view.LoginActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".module.query.views.QueryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.user.view.RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.main.views.SplashActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name=".module.main.views.DataChooiseActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".utils.dateselect.multi.MultiSelectActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.ticket.views.TicketActivity"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.4" />
+        <!--适配华为（huawei）刘海屏-->
+        <meta-data
+            android:name="android.notch_support"
+            android:value="true" />
+        <!--适配小米（xiaomi）刘海屏-->
+        <meta-data
+            android:name="notch.config"
+            android:value="portrait|landscape" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="sven.com.fileprovider.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+
+    </application>
+
+</manifest>

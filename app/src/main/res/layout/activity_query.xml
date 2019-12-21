@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp48">
+
+  <ImageView
+      android:id="@+id/im_return"
+      android:layout_marginStart="@dimen/dp10"
+      android:layout_width="wrap_content"
+      android:src="@mipmap/black_return"
+      android:layout_marginTop="@dimen/dp12"
+      android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_centerHorizontal="true"
+            android:layout_width="@dimen/dp200"
+            android:layout_height="@dimen/dp40"
+            android:layout_marginTop="@dimen/dp6"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/tx_start_station"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="北京"
+                android:textColor="@color/black_80"
+                android:textSize="@dimen/sp_16" />
+
+            <ImageView
+                android:id="@+id/im_address_change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/change" />
+
+            <TextView
+                android:id="@+id/tx_end_station"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="上海"
+                android:textColor="@color/black_80"
+                android:textSize="@dimen/sp_16" />
+        </LinearLayout>
+
+
+
+        <FrameLayout
+            android:id="@+id/fl_current"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/dp5"
+            android:background="@drawable/bg_ripple"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/ib_calendar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/app_name"
+                android:scaleType="centerInside"
+                android:src="@mipmap/ic_calendar"
+                android:tint="#000000" />
+
+            <TextView
+                android:id="@+id/tv_current_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:text="13"
+                android:textColor="#000000"
+                android:textSize="12sp" />
+        </FrameLayout>
+
+    </RelativeLayout>
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/text_f6"
+        android:layout_height="0.5dp"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_basee"
+            android:clipChildren="false"
+            android:focusable="false"
+            app:srlAccentColor="@color/text_99">
+
+            <com.scwang.smart.refresh.header.ClassicsHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+
+                <RelativeLayout
+                    android:id="@+id/rl_nodata"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/image_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/img_nodata" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/image_no"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/no_no_data"
+                        android:textColor="@color/text_77" />
+
+                </RelativeLayout>
+
+            </FrameLayout>
+
+            <com.scwang.smart.refresh.footer.ClassicsFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+        <com.haibin.calendarview.CalendarView
+            android:visibility="gone"
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            app:calendar_padding="10dp"
+            app:current_month_lunar_text_color="#CFCFCF"
+            app:current_month_text_color="#333333"
+            app:max_year="2021"
+            app:min_year="2019"
+            app:month_view="com.esaygo.app.utils.views.MeiZuMonthView"
+            app:month_view_show_mode="mode_only_current"
+            app:other_month_lunar_text_color="#e1e1e1"
+            app:other_month_text_color="#e1e1e1"
+            app:scheme_text="假"
+            app:scheme_text_color="#333"
+            app:scheme_theme_color="#128c4b"
+            app:selected_lunar_text_color="#CFCFCF"
+            app:selected_text_color="#333"
+            app:selected_theme_color="#80cfcfcf"
+            app:week_background="#fff"
+            app:week_start_with="sun"
+            app:week_text_color="#111111"
+            app:week_view="com.esaygo.app.utils.views.MeizuWeekView"
+            app:week_view_scrollable="true"
+            app:year_view_day_text_color="#333333"
+            app:year_view_day_text_size="9sp"
+            app:year_view_month_text_color="#ff0000"
+            app:year_view_month_text_size="20sp"
+            app:year_view_scheme_color="#f17706" />
+    </FrameLayout>
+
+</LinearLayout>

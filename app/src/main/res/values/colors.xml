@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#4876FF</color>
+    <color name="colorPrimaryDark">#4169E1</color>
+    <color name="colorAccent">#20C1FD</color>
+    <color name="main_color">#FD531E</color>
+    <color name="yellow_50">#FFD11B</color>
+    <color name="yellow_30">#FEA501</color>
+    <color name="pink_30">#FD7071</color>
+    <color name="blue_30">#20C1FD</color>
+    <color name="blue">#4169E1</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_30">#F2F2F2</color>
+    <color name="white_80">#FAFAFA</color>
+    <color name="orange_500">#FF9800</color>
+    <color name="green_300">#81C784</color>
+    <color name="gray">#B8B8B8</color>
+    <color name="gray_20">#B3B3B3</color>
+    <color name="gray_80">#BEBBB4</color>
+    <color name="gray_alpha_80">#4fBEBBB4</color>
+    <color name="gray_light_30">#E5E5E5</color>
+    <color name="black_80">#222222</color>
+    <color name="black_alpha_45">#71000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="black_alpha_30">#48000000</color>
+    <color name="black_alpha_60">#4f000000</color>
+    <color name="background_dark">#212121</color>
+    <color name="media_controller_bg">#99000000</color>
+    <color name="font_normal">#555555</color>
+    <color name="font_gray">#656565</color>
+    <color name="line_bg">#e6e6e6</color>
+    <color name="navigation_background_light">#FFF8F8F8</color>
+    <color name="navigation_subtitle_primary_text">#FFFFFFFF</color>
+    <color name="navigation_subtitle_secondary_text">#BFFFFFFF</color>
+    <color name="card_view_background">@color/white</color>
+    <color name="pink_text_color">#fb7299</color>
+    <color name="item_tag_background">@color/white</color>
+    <color name="refresh_pink_background">#fb7299</color>
+    <color name="bili_logo_pink_color">#fb7299</color>
+    <color name="focus_text_color">#fb7299</color>
+    <color name="focus_bg_color">@android:color/transparent</color>
+    <color name="window_background">#eaeaea</color>
+    <color name="bangumi_badge_gary">#e58B8B8C</color>
+    <color name="nav_head_image_background">#F8668D</color>
+    <color name="nav_head_round_background">#FDC7D6</color>
+    <color name="nav_head_roung_text_background">#FB7BA0</color>
+    <color name="bangumi_index_green_bg">#75C568</color>
+    <color name="bangumi_index_yellow_bg">#FFC03A</color>
+    <color name="vip_button_bg_color">#FEB1B3</color>
+    <color name="vip_button_text_color">#FE6F70</color>
+    <color name="search_background_color">#E9EAEA</color>
+
+    <color name="theme_color_primary">#fb7299</color>
+    <color name="theme_color_primary_dark">#b85671</color>
+    <color name="theme_color_primary_trans">#99f0486c</color>
+    <color name="theme_color_secondary">#fb7299</color>
+
+    <color name="gray_dark">#999999</color>
+    <color name="gray_trans">#44999999</color>
+    <color name="gray_light">#dcdcdc</color>
+
+    <!-- theme color -->
+    <color name="pink">#fb7299</color>
+    <color name="pink_dark">#b85671</color>
+    <color name="pink_trans">#99f0486c</color>
+
+    <color name="red">#CD2626</color>
+    <color name="bg_basee">#F7F7F7</color>
+    <color name="text_22">#222222</color>
+
+    <color name="text_33">#333333</color>
+
+    <color name="text_40">#404040</color>
+
+    <color name="text_50">#505050</color>
+
+    <color name="text_66">#666666</color>
+
+    <color name="text_8c">#8c8c8c</color>
+
+    <color name="text_99">#999999</color>
+
+    <color name="text_dd">#dddddd</color>
+
+    <color name="text_ca">#cacaca</color>
+
+    <color name="text_cd">#cdcdcd</color>
+
+    <color name="text_af">#afafaf</color>
+
+    <color name="text_f9">#F9F9F9</color>
+
+    <color name="text_f6">#F6F6F6</color>
+
+    <color name="text_7f">#7F7F7F</color>
+
+    <color name="text_77">#777777</color>
+
+    <color name="text_fa">#FAFAFA</color>
+
+    <color name="text_f5">#f5f5f5</color>
+
+    <color name="text_ee">#eeeeee</color>
+
+    <color name="text_c4">#C4C3CB</color>
+
+    <color name="text_c0">#C0C0C0</color>
+
+    <color name="text_ac">#acacac</color>
+
+    <color name="text_b4">#b4b4b4</color>
+
+    <color name="text_bf">#bfbfbf</color>
+
+    <color name="text_pink">#FDC1C9</color>
+
+    <color name="text_gold">#F2BC4B</color>
+
+    <color name="text_orange">#E94D76</color>
+
+
+    <color name="red_normal">#FF0000</color>
+    <color name="red_pressed">#FF6666</color>
+    <color name="green_normal">#37C000</color>
+    <color name="green_pressed">#30A070</color>
+    <color name="purple_normal">#9932CC</color>
+    <color name="purple_pressed">#9F79EE</color>
+    <color name="white_pressed">#CFCFCF</color>
+
+    <!--搜索框-->
+    <color name="text_black">#737373</color>
+    <color name="text_grey">#9DA0A3</color>
+    <color name="divider">#e6e6e6</color>
+    <color name="colorWhite">#FFF</color>
+    <!--面试对话选择框-->
+    <color name="indicator_normal">#fff0f0f0</color>
+    <color name="indicator_select">#969696</color>
+    <color name="theme_gray">#F5F5F5</color>
+    <color name="slider_color_normal">#ffa6a6a6</color>
+    <color name="slider_color">#ff969696</color>
+    <color name="theme_color">#552E86F4</color>
+
+    <color name="ban_trans">#80000000</color>
+
+
+    <color name="color_red">#FD2E4A</color>
+    <color name="color_green">#13D1BE</color>
+</resources>

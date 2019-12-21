@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/dp5"
+        app:cardElevation="@dimen/dp0"
+        android:layout_marginStart="@dimen/dp10"
+        android:layout_marginEnd="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp3"
+        android:layout_marginBottom="@dimen/dp2"
+        app:contentPadding="@dimen/dp10">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+          >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="@dimen/dp50">
+
+                <LinearLayout
+                    android:layout_width="@dimen/dp0"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/tx_station_name"
+                        android:layout_marginTop="@dimen/dp5"
+                        android:layout_width="wrap_content"
+                        android:textSize="@dimen/sp_13"
+                        android:textColor="@color/text_33"
+                        android:text="北京 - 上海"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/tx_checi"
+                        android:layout_marginTop="@dimen/dp3"
+                        android:layout_width="wrap_content"
+                        android:textSize="@dimen/sp_10"
+                        android:textColor="@color/text_66"
+                        android:text=" k79,k94"
+                        android:layout_height="wrap_content"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="@dimen/dp100"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:textColor="@color/green_pressed"
+                        android:text="抢票中"
+                        android:textSize="@dimen/sp_11"
+                        android:gravity="end"
+                        android:id="@+id/tx_status"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/tx_action"
+                        android:layout_marginTop="@dimen/dp2"
+                        android:layout_gravity="end"
+                        android:layout_width="@dimen/dp60"
+                        android:textColor="@color/main_color"
+                        android:text="取消抢票"
+                        android:gravity="center"
+                        android:textSize="@dimen/sp_11"
+                        android:background="@drawable/bg_bianyuan"
+                        android:layout_height="@dimen/dp25"/>
+
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tx_miaoshu"
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/sp_12"
+                android:textColor="@color/text_66"
+                android:text="09-29出发 乘车人：王芳平"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+</LinearLayout>
