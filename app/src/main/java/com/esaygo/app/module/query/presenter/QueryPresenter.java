@@ -9,6 +9,7 @@ import com.esaygo.app.module.query.contract.QueryContract;
 import com.esaygo.app.module.query.modle.TrainBean;
 import com.esaygo.app.module.user.bean.AuthCredential;
 import com.esaygo.app.rx.RxUtils;
+import com.esaygo.app.utils.ToastUtils;
 import com.esaygo.app.utils.network.common.HttpResponseBase;
 import com.esaygo.app.utils.network.helper.RetrofitHelper;
 import com.lzy.okgo.OkGo;
@@ -161,35 +162,40 @@ public class QueryPresenter extends RxPresenter<QueryContract.View> implements Q
      */
     public static List<TrainBean> formatQueryMessage(String s) {
         List<TrainBean> list = new ArrayList<>();
-        JSONObject jsonObject = JSONObject.parseObject(s);
-        JSONObject dataJson = jsonObject.getJSONObject("data");
-        List<String> tmp = (List) dataJson.get("result");
-        for (int i = 0; i < tmp.size(); i++) {
-            String[] ss = tmp.get(i).split("\\|");
-            TrainBean t = new TrainBean();
-            t.setSecret_str(ss[0]);
-            t.setTrain_code(ss[2]);
-            t.setNum(ss[3]);
-            t.setFrom(ss[4]);
-            t.setTo(ss[5]);
-            t.setFind_from(ss[6]);
-            t.setFind_to(ss[7]);
-            t.setStart_time(ss[8]);
-            t.setEnd_time(ss[9]);
-            t.setCost_time(ss[10]);
-            t.setCan_buy(ss[11]);
-            t.setTrain_date(ss[13]);
-            t.setWz(ss[26]);
-            t.setYz(ss[29]);
-            t.setRz(ss[24]);
-            t.setYw(ss[28]);
-            t.setDw(ss[33]);
-            t.setRw(ss[23]);
-            t.setGjrw(ss[21]);
-            t.setEdz(ss[30]);
-            t.setYdz(ss[31]);
-            t.setSwtdz(ss[32]);
-            list.add(t);
+        try {
+            JSONObject jsonObject = JSONObject.parseObject(s);
+            JSONObject dataJson = jsonObject.getJSONObject("data");
+            List<String> tmp = (List) dataJson.getJSONArray("result");
+            for (int i = 0; i < tmp.size(); i++) {
+                String[] ss = tmp.get(i).split("\\|");
+                TrainBean t = new TrainBean();
+                t.setSecret_str(ss[0]);
+                t.setTrain_code(ss[2]);
+                t.setNum(ss[3]);
+                t.setFrom(ss[4]);
+                t.setTo(ss[5]);
+                t.setFind_from(ss[6]);
+                t.setFind_to(ss[7]);
+                t.setStart_time(ss[8]);
+                t.setEnd_time(ss[9]);
+                t.setCost_time(ss[10]);
+                t.setCan_buy(ss[11]);
+                t.setTrain_date(ss[13]);
+                t.setWz(ss[26]);
+                t.setYz(ss[29]);
+                t.setRz(ss[24]);
+                t.setYw(ss[28]);
+                t.setDw(ss[33]);
+                t.setRw(ss[23]);
+                t.setGjrw(ss[21]);
+                t.setEdz(ss[30]);
+                t.setYdz(ss[31]);
+                t.setSwtdz(ss[32]);
+                list.add(t);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return list;
     }

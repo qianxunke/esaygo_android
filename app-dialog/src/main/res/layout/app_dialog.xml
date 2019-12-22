@@ -3,7 +3,7 @@
     android:layout_height="220dp"
     android:layout_gravity="center"
     android:layout_margin="50dp"
-    android:background="@drawable/up_liang_bg">
+   >
 
 <LinearLayout
     android:layout_width="match_parent"

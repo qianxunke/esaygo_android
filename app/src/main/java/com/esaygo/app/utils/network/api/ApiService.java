@@ -46,7 +46,7 @@ public interface ApiService {
     @POST("user/login12306")
     Flowable<HttpResponseBase<Object>> doneLogin12306(@Body TicketPresenter.Login12306Request login12306Request);
 
-    @POST("user/app/update")
+    @GET("user/app/update")
     Flowable<HttpResponseBase<MainPresenter.UpdateInfo>> doneUpdate();
 
 

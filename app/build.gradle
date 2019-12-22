@@ -7,8 +7,8 @@ android {
         applicationId "com.esaygo.app"
         minSdkVersion 20
         targetSdkVersion 29
-        versionCode 108
-        versionName "1.0.8"
+        versionCode 111
+        versionName "1.1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
@@ -19,7 +19,6 @@ android {
         }
 
         manifestPlaceholders = [
-
                 XG_ACCESS_ID:"2100350620",
                 XG_ACCESS_KEY : "AWF4W2V822BJ",
         ]

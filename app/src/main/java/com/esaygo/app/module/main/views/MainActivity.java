@@ -154,7 +154,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                             @Override
                             public void onClick(View v) {
                                 new AppUpdater.Builder()
-                                        .serUrl(datas.data.getMessage())
+                                        .serUrl(datas.data.getUrl())
                                         .setFilename("AppUpdater.apk")
                                         .build(mContext)
                                         .start();
