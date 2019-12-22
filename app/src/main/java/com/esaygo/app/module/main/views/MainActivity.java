@@ -191,7 +191,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         tabView.setTabViewChild(tabViewChildList, getSupportFragmentManager());
         tabView.setTabViewDefaultPosition(0);
         quanxian();
-        ToastUtils.Speak("您好，"+ UserModel.getCurrentUser().getNike_name()+",欢迎使用EsayGo,祝您抢票愉快");
+        ToastUtils.Speak("您好,欢迎使用EsayGo,祝您抢票愉快");
 
     }
 
