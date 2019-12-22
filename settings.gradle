@@ -1,2 +1,2 @@
-include ':app', ':citypicker', ':date-library'
+include ':app', ':citypicker', ':date-library', ':app-dialog'
 rootProject.name='esaygo_android'

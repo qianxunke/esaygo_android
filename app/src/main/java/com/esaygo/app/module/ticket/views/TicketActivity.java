@@ -16,11 +16,14 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.esaygo.app.R;
 import com.esaygo.app.common.base.BaseActivity;
 import com.esaygo.app.common.constan.Constans;
+import com.esaygo.app.module.query.modle.TrainBean;
+import com.esaygo.app.module.query.views.QueryActivity;
 import com.esaygo.app.module.ticket.contract.TicketContract;
 import com.esaygo.app.module.ticket.model.TaskDetails;
 import com.esaygo.app.module.ticket.presenter.TicketPresenter;
 import com.esaygo.app.module.user.UserModel;
 import com.esaygo.app.module.user.bean.Presenter;
+import com.esaygo.app.utils.StatonUtils;
 import com.esaygo.app.utils.ToastUtils;
 import com.esaygo.app.utils.dateselect.multi.MultiSelectActivity;
 import com.esaygo.app.utils.network.common.HttpResponseBase;
@@ -91,6 +94,10 @@ public class TicketActivity extends BaseActivity<TicketPresenter> implements Tic
     List<Presenter> selectPresenterList;
     SelectPresenterAdapter selectPresenterAdapter;
 
+    TicketTripAdapter ticketTripAdapter;
+    List<TrainBean> trainBeanList;
+
+
 
     public final static int GETSELECT_DATES_REQUEST = 10011;
 
@@ -117,47 +124,7 @@ public class TicketActivity extends BaseActivity<TicketPresenter> implements Tic
         }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (getIntent().getSerializableExtra("startCity") != null) {
-            startCity = (City) getIntent().getSerializableExtra("startCity");
-            tx_start_station.setText(startCity.getName());
-        }
 
-        if (getIntent().getSerializableExtra("endCity") != null) {
-            endCity = (City) getIntent().getSerializableExtra("endCity");
-            tx_end_station.setText(endCity.getName());
-        }
-
-        if (getIntent().getStringExtra("goTime") != null) {
-            selectDates = getIntent().getStringExtra("goTime");
-            tx_train_dates.setText(selectDates);
-        }
-
-        if (getIntent().getStringExtra("purpose_codes") != null) {
-            purpose_codes = getIntent().getStringExtra("purpose_codes");
-            if (purpose_codes.equals("ADULT")) {
-                cb_scan.setEnabled(false);
-                cb_chooise.setEnabled(true);
-                cb_chooise.setChecked(false);
-            } else {
-                cb_chooise.setEnabled(false);
-                cb_scan.setEnabled(true);
-                cb_scan.setChecked(false);
-            }
-        }
-        if (getIntent().getStringExtra("trips") != null) {
-            trips = getIntent().getStringExtra("trips");
-            tx_train_trips.setText(trips);
-        }
-
-        if (!selectDates.equals("")) {
-            tx_train_dates.setText(selectDates);
-        }
-
-
-    }
 
     @Override
     public void showLogin12306(HttpResponseBase<Object> datas) {
@@ -200,6 +167,55 @@ public class TicketActivity extends BaseActivity<TicketPresenter> implements Tic
     @Override
     protected void initWidget() {
         super.initWidget();
+        if (getIntent().getSerializableExtra("startCity") != null) {
+            startCity = (City) getIntent().getSerializableExtra("startCity");
+            tx_start_station.setText(startCity.getName());
+        }
+
+        if (getIntent().getSerializableExtra("endCity") != null) {
+            endCity = (City) getIntent().getSerializableExtra("endCity");
+            tx_end_station.setText(endCity.getName());
+        }
+
+        if (getIntent().getStringExtra("goTime") != null) {
+            selectDates = getIntent().getStringExtra("goTime");
+            tx_train_dates.setText(selectDates);
+        }
+
+        if (getIntent().getStringExtra("purpose_codes") != null) {
+            purpose_codes = getIntent().getStringExtra("purpose_codes");
+            if (purpose_codes.equals("ADULT")) {
+                cb_scan.setEnabled(false);
+                cb_chooise.setEnabled(true);
+                cb_chooise.setChecked(false);
+            } else {
+                cb_chooise.setEnabled(false);
+                cb_scan.setEnabled(true);
+                cb_scan.setChecked(false);
+            }
+        }
+        if (getIntent().getSerializableExtra("trainBeanList") != null) {
+           QueryActivity.TrainsList temp =(QueryActivity.TrainsList) getIntent().getSerializableExtra("trainBeanList");
+           if (temp!=null) {
+               trainBeanList = temp.getBeanList();
+               for (int i = 0; i < trainBeanList.size(); i++) {
+                   if (trainBeanList.get(i).isSelect()) {
+                       if (trips.isEmpty()) {
+                           trips = trainBeanList.get(i).getNum();
+                       } else {
+                           trips += "," + trainBeanList.get(i).getNum();
+                       }
+                   }
+               }
+           }
+            tx_train_trips.setText(trips);
+        }else {
+            trainBeanList=new ArrayList<>();
+        }
+
+        if (!selectDates.equals("")) {
+            tx_train_dates.setText(selectDates);
+        }
         showPresenterList = new ArrayList<>();
         showPresenterAdapter = new ShowPresenterAdapter(R.layout.item_show_presenter, showPresenterList);
         selectPresenterList = new ArrayList<>();
@@ -212,6 +228,9 @@ public class TicketActivity extends BaseActivity<TicketPresenter> implements Tic
         showRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         showRecyclerView.setAdapter(showPresenterAdapter);
 
+
+
+        ticketTripAdapter=new TicketTripAdapter(R.layout.item_select_train,trainBeanList);
 
         txt_add_presenter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -229,7 +248,7 @@ public class TicketActivity extends BaseActivity<TicketPresenter> implements Tic
         tx_select_trips.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.showWarningToast("目前不支持选择车次，敬请期待下个版本");
+                showSelectTrain();
             }
         });
         tx_select_dates.setOnClickListener(new View.OnClickListener() {
@@ -293,7 +312,6 @@ public class TicketActivity extends BaseActivity<TicketPresenter> implements Tic
         if (requestCode == GETSELECT_DATES_REQUEST && resultCode == GETSELECT_DATES_RESPONSE) {
             String da = data.getStringExtra("dates");
             if (da != null && !da.isEmpty()) {
-                System.out.println("传回了" + da);
                 selectDates = da;
                 tx_train_dates.setText(selectDates);
             }
@@ -638,5 +656,102 @@ public class TicketActivity extends BaseActivity<TicketPresenter> implements Tic
             }
         }, Constans.TIME_1500);
     }
+
+    private void showSelectTrain(){
+        NiceDialog.init()
+                .setLayoutId(R.layout.dialog_select_trip)
+                .setConvertListener(new ViewConvertListener() {
+                    @Override
+                    public void convertView(final ViewHolder holder, final BaseNiceDialog dialog) {
+                        RecyclerView recyclerView = holder.getView(R.id.xrecleview_trip_list);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+                        recyclerView.setAdapter(ticketTripAdapter);
+                        ticketTripAdapter.notifyDataSetChanged();
+                        holder.setOnClickListener(R.id.tx_ok, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog.dismiss();
+                                trips="";
+                                for (int i=0;i<trainBeanList.size();i++){
+                                    if (trainBeanList.get(i).isSelect()){
+                                        if(trips.isEmpty()){
+                                            trips=trainBeanList.get(i).getNum();
+                                        }else {
+                                            trips+=","+trainBeanList.get(i).getNum();
+                                        }
+                                    }
+                                }
+                                tx_train_trips.setText(trips);
+                            }
+                        });
+
+                    }
+                })
+                .setMargin(16)
+                .setOutCancel(false)
+                .show(getSupportFragmentManager());
+    }
+
+
+    class TicketTripAdapter extends BaseQuickAdapter<TrainBean, BaseViewHolder>{
+
+        public TicketTripAdapter(int layoutResId, List data) {
+            super(layoutResId, data);
+        }
+
+        @Override
+        protected void convert(BaseViewHolder helper, TrainBean item) {
+
+            //判断是高铁还是慢车，K开头慢车 ，其他快车
+            if (item.getNum().startsWith("K")) {
+                helper.setVisible(R.id.ll_item_gaotie, false);
+                helper.setVisible(R.id.ll_item_manche, true);
+                helper.setText(R.id.tx_item_train_yingzuo, "硬座(" + item.getYz() + ")");
+                helper.setText(R.id.tx_item_train_yingwo, "硬卧(" + item.getYw() + ")");
+                helper.setText(R.id.tx_item_train_ruanwo, "软卧(" + item.getRw() + ")");
+                helper.setText(R.id.tx_item_train_wuzuo, "无座(" + item.getWz() + ")");
+            } else {
+                helper.setVisible(R.id.ll_item_manche, false);
+                helper.setVisible(R.id.ll_item_gaotie, true);
+                helper.setText(R.id.tx_item_train_erdengzuo, "二等座(" + item.getYw() + ")");
+                helper.setText(R.id.tx_item_train_yidengzuo, "一等座(" + item.getRw() + ")");
+                helper.setText(R.id.tx_item_train_shangwuzuo, "商务座(" + item.getWz() + ")");
+            }
+
+            if (item.getCost_time() != null) {
+                String[] s = item.getCost_time().split(":");
+                helper.setText(R.id.tx_item_train_spend_time, s[0] + "小时" + s[1] + "分钟");
+                int day = Integer.parseInt(s[0]) / 24;
+
+                helper.setText(R.id.tx_item_train_spend_days, "+" + day+"天");
+                helper.setVisible(R.id.tx_item_train_spend_days, day > 0);
+
+            }
+            helper.setText(R.id.tx_item_train_start_time, item.getStart_time() + "");
+            helper.setText(R.id.tx_item_train_start_station, StatonUtils.getStationFromCode(item.getFrom()) + "");
+            helper.setText(R.id.tx_item_train_end_time, item.getEnd_time() + "");
+            helper.setText(R.id.tx_item_train_end_station, StatonUtils.getStationFromCode(item.getTo()) + "");
+            helper.setText(R.id.tx_item_train_number, item.getNum() + "");
+
+            ImageView selectImageview = helper.getView(R.id.trip_iv_choose);
+            selectImageview.setSelected(item.isSelect());
+
+            helper.setOnClickListener(R.id.trip_iv_choose, new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (item.isSelect()) {
+                        item.setSelect(false);
+                    } else {
+                        item.setSelect(true);
+                    }
+                    notifyDataSetChanged();
+                }
+            });
+        }
+
+    }
+
+
+
 
 }

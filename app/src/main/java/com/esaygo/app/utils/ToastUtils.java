@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.Gravity;
 import android.widget.Toast;
 
+import com.baidu.tts.client.SpeechSynthesizer;
+import com.baidu.tts.client.TtsMode;
 import com.esaygo.app.common.constan.Constans;
 
 import es.dmoral.toasty.Toasty;
@@ -20,6 +22,28 @@ public class ToastUtils {
     public static void speak(String message) {
         getToast(message, Toast.LENGTH_SHORT).show();
     }
+
+
+    public static SpeechSynthesizer mSpeechSynthesizer;
+
+
+    private static void initVoice() {
+        mSpeechSynthesizer = SpeechSynthesizer.getInstance();
+        mSpeechSynthesizer.setContext(AppUtils.getAppContext()); // this 是Context的之类，如Activity
+        mSpeechSynthesizer.setAppId("18082164"/*这里只是为了让Demo运行使用的APPID,请替换成自己的id。*/);
+        mSpeechSynthesizer.setApiKey("OqfRD5B3Trbw8Bdo7QEXj1Rt", "DIRp0atDgu89qYpRnZhBt8377yF3fO8h"/*这里只是为了让Demo正常运行使用APIKey,请替换成自己的APIKey*/);
+        mSpeechSynthesizer.auth(TtsMode.ONLINE); // 离在线混合
+        mSpeechSynthesizer.setParam(SpeechSynthesizer.PARAM_SPEAKER, "4"); // 设置发声的人声音，在线生效
+        mSpeechSynthesizer.initTts(TtsMode.ONLINE); // 初始化离在线混合模式，如果只需要在线合成功能，使用 TtsMode.ONLINE
+    }
+
+    public static void Speak(String msg){
+        if (mSpeechSynthesizer==null){
+            initVoice();
+        }
+        mSpeechSynthesizer.speak(msg);
+    }
+
 
     /**********************
      * 非连续弹出的Toast

@@ -52,7 +52,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dp3"
                         android:text="杭州东"
-                        android:textSize="@dimen/sp_16" />
+                        android:textSize="@dimen/sp_15" />
 
 
                 </LinearLayout>
@@ -84,6 +84,7 @@
                         android:layout_marginStart="@dimen/dp12"
                         android:layout_marginTop="@dimen/dp3"
                         android:text="G230"
+                        android:textColor="@color/black_80"
                         android:textSize="@dimen/sp_11" />
 
 
@@ -128,7 +129,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/dp3"
                         android:text="贵阳"
-                        android:textSize="@dimen/sp_16" />
+                        android:textSize="@dimen/sp_15" />
 
 
                 </LinearLayout>
@@ -139,7 +140,8 @@
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:orientation="horizontal"
-                    android:visibility="gone">
+                    android:visibility="gone"
+                   >
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -164,89 +166,95 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/ll_item_manche"
+            <FrameLayout
+                android:layout_marginTop="@dimen/dp5"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp16"
-                android:orientation="horizontal"
-                android:weightSum="4">
+                android:layout_height="@dimen/dp20">
 
-                <TextView
-                    android:id="@+id/tx_item_train_yingzuo"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp3"
-                    android:layout_weight="1"
-                    android:text="硬座有票"
-                    android:textSize="@dimen/sp_11" />
+                <LinearLayout
+                    android:id="@+id/ll_item_manche"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp16"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
 
-                <TextView
-                    android:id="@+id/tx_item_train_yingwo"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp3"
-                    android:layout_weight="1"
-                    android:text="硬卧有票"
-                    android:textSize="@dimen/sp_11" />
+                    <TextView
+                        android:id="@+id/tx_item_train_yingzuo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp3"
+                        android:layout_weight="1"
+                        android:text="硬座有票"
+                        android:textSize="@dimen/sp_11" />
 
-                <TextView
-                    android:id="@+id/tx_item_train_ruanwo"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp3"
-                    android:layout_weight="1"
-                    android:text="软卧6张"
-                    android:textSize="@dimen/sp_11" />
+                    <TextView
+                        android:id="@+id/tx_item_train_yingwo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp3"
+                        android:layout_weight="1"
+                        android:text="硬卧有票"
+                        android:textSize="@dimen/sp_11" />
 
-                <TextView
-                    android:id="@+id/tx_item_train_wuzuo"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp3"
-                    android:layout_weight="1"
-                    android:text="无座有票"
-                    android:textSize="@dimen/sp_11" />
+                    <TextView
+                        android:id="@+id/tx_item_train_ruanwo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp3"
+                        android:layout_weight="1"
+                        android:text="软卧6张"
+                        android:textSize="@dimen/sp_11" />
 
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_item_gaotie"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp20"
-                android:orientation="horizontal"
-                android:visibility="gone"
-                android:weightSum="4">
-
-                <TextView
-                    android:id="@+id/tx_item_train_erdengzuo"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp3"
-                    android:layout_weight="1"
-                    android:text="二等座有票"
-                    android:textSize="@dimen/sp_11" />
-
-                <TextView
-                    android:id="@+id/tx_item_train_yidengzuo"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp3"
-                    android:layout_weight="1"
-                    android:text="一等座有票"
-                    android:textSize="@dimen/sp_11" />
-
-                <TextView
-                    android:id="@+id/tx_item_train_shangwuzuo"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp3"
-                    android:layout_weight="1"
-                    android:text="商务座"
-                    android:textSize="@dimen/sp_11" />
+                    <TextView
+                        android:id="@+id/tx_item_train_wuzuo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp3"
+                        android:layout_weight="1"
+                        android:text="无座有票"
+                        android:textSize="@dimen/sp_11" />
 
 
-            </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_item_gaotie"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp20"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:id="@+id/tx_item_train_erdengzuo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp3"
+                        android:layout_weight="1"
+                        android:text="二等座有票"
+                        android:textSize="@dimen/sp_11" />
+
+                    <TextView
+                        android:id="@+id/tx_item_train_yidengzuo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp3"
+                        android:layout_weight="1"
+                        android:text="一等座有票"
+                        android:textSize="@dimen/sp_11" />
+
+                    <TextView
+                        android:id="@+id/tx_item_train_shangwuzuo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp3"
+                        android:layout_weight="1"
+                        android:text="商务座"
+                        android:textSize="@dimen/sp_11" />
+
+
+                </LinearLayout>
+            </FrameLayout>
         </LinearLayout>
 
 

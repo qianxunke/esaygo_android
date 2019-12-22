@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="220dp"
+    android:layout_gravity="center"
+    android:layout_margin="50dp"
+    android:background="@drawable/up_liang_bg">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="220dp"
+    android:layout_gravity="center"
+    android:layout_margin="5dp"
+    android:background="@drawable/up_hui20banyunajiao"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/tvDialogTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:minHeight="40dp"
+        android:padding="6dp"
+        android:lines="1"
+        android:textSize="@dimen/app_dialog_title_text_size"
+        android:layout_marginTop="10dp"
+        android:textColor="#FD531E"
+        android:text="@string/app_dialog_title"/>
+    <TextView
+        android:id="@+id/tvDialogContent"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:padding="10dp"
+        android:textSize="14sp"
+        android:textColor="#03959d"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:text=""
+        android:maxLines="3"
+        android:ellipsize="end"
+        android:layout_marginBottom="16dp"
+        android:lineSpacingMultiplier="1" />
+    <include
+        layout="@layout/app_dialog_line_h"
+
+        />
+    <LinearLayout
+
+        android:layout_gravity="end"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal">
+        <Button
+            android:id="@+id/btnDialogCancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_weight="1"
+            android:text="@string/app_dialog_cancel"
+            android:textSize="16sp"
+            android:textColor="#FD531E"
+            android:background="?android:attr/selectableItemBackground"/>
+        <include
+            android:id="@+id/line"
+            layout="@layout/app_dialog_line_v"/>
+        <Button
+            android:id="@+id/btnDialogOK"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+
+            android:layout_weight="1"
+            android:text="@string/app_dialog_ok"
+            android:textSize="16sp"
+            android:textColor="#FD531E"
+            android:background="?android:attr/selectableItemBackground"/>
+    </LinearLayout>
+
+</LinearLayout>
+</LinearLayout>

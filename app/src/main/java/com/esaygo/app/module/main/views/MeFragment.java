@@ -11,6 +11,7 @@ import com.esaygo.app.common.base.BaseFragment;
 import com.esaygo.app.module.user.UserModel;
 import com.esaygo.app.module.user.view.LoginActivity;
 import com.gyf.immersionbar.ImmersionBar;
+import com.tencent.android.tpush.XGPushManager;
 
 import butterknife.BindView;
 
@@ -57,6 +58,7 @@ public class MeFragment extends  ImBaseFragment {
         txt_go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                XGPushManager.delAccount(mContext, UserModel.getCurrentUser().getMobile_phone());
                 UserModel.deleteUserInfo();
                 PdaApplication.getInstance().removeAllActivitys();
                 startActivity(new Intent(mContext, LoginActivity.class));

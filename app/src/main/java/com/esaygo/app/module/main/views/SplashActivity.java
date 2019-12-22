@@ -2,6 +2,7 @@ package com.esaygo.app.module.main.views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -20,7 +21,10 @@ import com.esaygo.app.module.main.presenter.SplashPresenter;
 import com.esaygo.app.module.user.UserModel;
 import com.esaygo.app.module.user.view.LoginActivity;
 import com.esaygo.app.utils.StatusBarUtil;
+import com.esaygo.app.utils.ToastUtils;
 import com.jakewharton.rxbinding2.view.RxView;
+import com.tencent.android.tpush.XGIOperateCallback;
+import com.tencent.android.tpush.XGPushManager;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import java.util.concurrent.TimeUnit;
@@ -133,6 +137,18 @@ public class SplashActivity extends RxAppCompatActivity implements SplashContrac
         //    boolean flag = PrefsUtils.getInstance().getBoolean(SyncStateContract.Constants.IS_LOGINED_FLAG, false);
         //   flag = false;
         if (UserModel.getCurrentUser() != null) {
+            XGPushManager.appendAccount(PdaApplication.getInstance(), UserModel.getCurrentUser().getMobile_phone(),
+                    new XGIOperateCallback() {
+                        @Override
+                        public void onSuccess(Object data, int flag) {
+                            Log.d("TPush", "注册成功，设备token为：" + data);
+                        }
+
+                        @Override
+                        public void onFail(Object data, int errCode, String msg) {
+                            Log.d("TPush", "注册失败，错误码：" + errCode + ",错误信息：" + msg);
+                        }
+                    });
           //  TagAliasOperatorHelper.getInstance().handleNewAction(getApplicationContext(), UserModel.getCurrentUser().getUser_id()+"");
             startActivity(new Intent(this, MainActivity.class));
             finish();

@@ -1,6 +1,8 @@
 package com.esaygo.app.module.query.modle;
 
-public class TrainBean {
+import java.io.Serializable;
+
+public class TrainBean implements Serializable {
 /*
     {
         "secret_str": "RinL%2F5YUQLdTECtSOV%2FtCTyRNd4eoRzzFud%2FrEPt8ZnvXk5EuheETb0Ti6EwBlhxF8wjHn5CC7A1%0A%2FwpV12aJgXuDDA1TLywDtbTKIACTdiiZGlUgftbWJZI5B%2B%2B%2BeITeBGwkJsR1tjyNIYwLUCxj1bPj%0AlSPbSI460%2BK8D3yZ15VJ%2FdA%2BDXNo9monHFQUGHNsrbiI6rV1dkmxuuUvL3pzhji2DPQKSYcZF9Cj%0AttHMQsBr0Y0Mu6qkw6%2FI594S20OECYmzoXTF41%2B%2Ba77O7LCVnXYmcPDvbo%2FhQtWeyfiNeN%2BX2wUp%0AWse7lg%3D%3D",
@@ -57,6 +59,7 @@ string	bz  =24;  //1
     private String dw;
     private String gjrw;
     private String edz;
+    private boolean isSelect;
 
     public String getSecret_str() {
         return secret_str;
@@ -240,5 +243,13 @@ string	bz  =24;  //1
 
     public void setEdz(String edz) {
         this.edz = edz;
+    }
+
+    public boolean isSelect() {
+        return isSelect;
+    }
+
+    public void setSelect(boolean select) {
+        isSelect = select;
     }
 }

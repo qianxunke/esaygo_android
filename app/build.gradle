@@ -7,10 +7,31 @@ android {
         applicationId "com.esaygo.app"
         minSdkVersion 20
         targetSdkVersion 29
-        versionCode 102
-        versionName "1.0.2"
+        versionCode 108
+        versionName "1.0.8"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+
+        ndk {
+            //根据需要 自行选择添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'x86_64','x86'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+
+        manifestPlaceholders = [
+
+                XG_ACCESS_ID:"2100350620",
+                XG_ACCESS_KEY : "AWF4W2V822BJ",
+        ]
+    }
+    // 签名设置
+    signingConfigs {
+        release {
+            storeFile file("$rootProject.projectDir/esaygo.jks")
+            storePassword "qianxunke"
+            keyAlias "qianxunke"
+            keyPassword "qianxunke"
+        }
     }
     buildTypes {
         release {
@@ -22,8 +43,19 @@ android {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
     }
-}
 
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+}
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -116,4 +148,15 @@ dependencies {
     implementation 'com.lzy.net:okgo:3.0.4'
 
     implementation 'com.alibaba:fastjson:1.1.71.android'
+    implementation project(path: ':app-dialog')
+    implementation 'com.mylhyl:acp:1.2.0'
+
+    //信鸽jar，不包含厂商通道
+    implementation  'com.tencent.xinge:xinge:4.3.5-release'
+    //jg包
+    implementation'com.tencent.jg:jg:1.1'
+    //wup包
+    implementation 'com.tencent.wup:wup:1.0.0.E-Release'
+    //mid包，minSdkVersion 14
+    implementation 'com.tencent.mid:mid:4.0.7-Release'
 }

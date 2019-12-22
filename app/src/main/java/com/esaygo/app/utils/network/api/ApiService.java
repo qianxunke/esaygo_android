@@ -2,6 +2,7 @@ package com.esaygo.app.utils.network.api;
 
 
 
+import com.esaygo.app.module.main.presenter.MainPresenter;
 import com.esaygo.app.module.query.modle.TrainBean;
 import com.esaygo.app.module.query.presenter.QueryPresenter;
 import com.esaygo.app.module.ticket.model.TaskDetails;
@@ -44,6 +45,10 @@ public interface ApiService {
 
     @POST("user/login12306")
     Flowable<HttpResponseBase<Object>> doneLogin12306(@Body TicketPresenter.Login12306Request login12306Request);
+
+    @POST("user/app/update")
+    Flowable<HttpResponseBase<MainPresenter.UpdateInfo>> doneUpdate();
+
 
 
     @GET("user/presenters")

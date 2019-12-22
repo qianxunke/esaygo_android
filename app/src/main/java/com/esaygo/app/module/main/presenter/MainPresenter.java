@@ -3,9 +3,12 @@ package com.esaygo.app.module.main.presenter;
 import android.content.Context;
 
 import com.esaygo.app.R;
+import com.esaygo.app.common.base.BaseSubscriber;
 import com.esaygo.app.common.base.RxPresenter;
 import com.esaygo.app.module.main.bean.FeatureItem;
 import com.esaygo.app.module.main.contract.MainContract;
+import com.esaygo.app.rx.RxUtils;
+import com.esaygo.app.utils.network.common.HttpResponseBase;
 import com.esaygo.app.utils.network.helper.RetrofitHelper;
 
 import java.util.ArrayList;
@@ -23,9 +26,27 @@ public class MainPresenter extends RxPresenter<MainContract.View> implements Mai
 
 
     @Override
-    public void doneUpdate(String local_version) {
+    public void doneUpdate() {
+        BaseSubscriber<HttpResponseBase<UpdateInfo>> subscriber =
+                mRetrofitHelper.doneUpdate()
+                        .compose(RxUtils.rxSchedulerHelper())
+                        .subscribeWith(new BaseSubscriber<HttpResponseBase<UpdateInfo>>(mView) {
+                            @Override
+                            public void onSuccess(HttpResponseBase<UpdateInfo> o) {
+                                mView.showUpdate(o);
+                            }
 
+                            @Override
+                            public void onError(Throwable e) {
+                                super.onError(e);
+                            }
+
+                        });
+        addSubscribe(subscriber);
     }
+
+
+
 
     @Override
     public void doneGetModules(Context context) {
@@ -37,5 +58,54 @@ public class MainPresenter extends RxPresenter<MainContract.View> implements Mai
         featureItems.add(new FeatureItem("5",context.getString(R.string.btn_export_palletize_verity_text),"client_tran_storage",0));
         featureItems.add(new FeatureItem("6",context.getString(R.string.btn_stockout_scan_text),"client_tran_storage",0));
         mView.showModules(featureItems);
+    }
+
+
+    /**
+     * message UpdateInfo {
+     *      string version=1;
+     * 	 string url=2;
+     * 	 string message=3;
+     * 	 int64 is_force=4;
+     * }
+     */
+
+    public static class UpdateInfo{
+        String version;
+        String url;
+        String message;
+        int is_force;
+
+        public String getVersion() {
+            return version;
+        }
+
+        public void setVersion(String version) {
+            this.version = version;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
+
+        public int getIs_force() {
+            return is_force;
+        }
+
+        public void setIs_force(int is_force) {
+            this.is_force = is_force;
+        }
     }
 }

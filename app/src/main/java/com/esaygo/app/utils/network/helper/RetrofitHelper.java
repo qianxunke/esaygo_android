@@ -3,6 +3,7 @@ package com.esaygo.app.utils.network.helper;
 
 
 
+import com.esaygo.app.module.main.presenter.MainPresenter;
 import com.esaygo.app.module.query.modle.TrainBean;
 import com.esaygo.app.module.query.presenter.QueryPresenter;
 import com.esaygo.app.module.ticket.model.TaskDetails;
@@ -63,5 +64,11 @@ public class RetrofitHelper {
     public Flowable<HttpResponseBase<Object>> doneLogin12306(TicketPresenter.Login12306Request login12306Request) {
         return mApiService.doneLogin12306(login12306Request);
     }
+
+    public Flowable<HttpResponseBase<MainPresenter.UpdateInfo>> doneUpdate() {
+        return mApiService.doneUpdate();
+    }
+
+
 
 }

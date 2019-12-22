@@ -14,11 +14,27 @@
 
     <include layout="@layout/common_title" />
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/text_fa">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginStart="@dimen/dp20"
+        android:layout_marginEnd="@dimen/dp20"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/dp20"
+        android:textColor="@color/black_80"
+        android:text="EsayGo官方提示:\n抢票途中如果遇到问题，欢迎加入QQ EsayGo官方内测群\n"
+        android:layout_height="wrap_content"/>
+     <ImageView
+         android:layout_width="@dimen/dp200"
+         android:layout_height="@dimen/dp300"
+        android:layout_marginTop="@dimen/dp80"
+         android:layout_centerHorizontal="true"
+         android:src="@mipmap/qunerweima"/>
 
         <TextView
             android:id="@+id/txt_go"

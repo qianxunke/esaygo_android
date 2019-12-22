@@ -2,10 +2,19 @@ package com.esaygo.app;
 
 import android.app.Activity;
 import android.app.Application;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Handler;
+import android.os.Message;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
 
+import com.esaygo.app.utils.ToastUtils;
 import com.facebook.stetho.Stetho;
 import com.esaygo.app.di.component.AppComponent;
 import com.esaygo.app.di.component.DaggerAppComponent;

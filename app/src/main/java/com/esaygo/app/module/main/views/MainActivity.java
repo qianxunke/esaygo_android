@@ -21,22 +21,34 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.esaygo.app.R;
 import com.esaygo.app.common.base.BaseActivity;
+import com.esaygo.app.common.constan.Constans;
 import com.esaygo.app.module.main.bean.FeatureItem;
 import com.esaygo.app.module.main.contract.MainContract;
 import com.esaygo.app.module.main.presenter.MainPresenter;
 import com.esaygo.app.module.main.views.adapter.FeatureAdapter;
 import com.esaygo.app.rx.RxBus;
 import com.esaygo.app.rx.event.Event;
+import com.esaygo.app.utils.AppUtils;
 import com.esaygo.app.utils.ToastUtils;
+import com.esaygo.app.utils.network.common.HttpResponseBase;
+import com.king.app.dialog.AppDialog;
+import com.king.app.dialog.AppDialogConfig;
 import com.king.app.updater.AppUpdater;
 import com.king.app.updater.http.OkHttpManager;
 import com.kongzue.dialog.v2.MessageDialog;
+import com.mylhyl.acp.Acp;
+import com.mylhyl.acp.AcpListener;
+import com.mylhyl.acp.AcpOptions;
+import com.shehuan.nicedialog.BaseNiceDialog;
+import com.shehuan.nicedialog.NiceDialog;
+import com.shehuan.nicedialog.ViewConvertListener;
 import com.ycl.tabview.library.TabView;
 import com.ycl.tabview.library.TabViewChild;
 
@@ -47,10 +59,12 @@ import java.util.Locale;
 
 import butterknife.BindView;
 
+import static android.provider.Settings.EXTRA_APP_PACKAGE;
+import static android.provider.Settings.EXTRA_CHANNEL_ID;
 import static java.security.AccessController.getContext;
 
 
-public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.View {
+public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.View{
 
     @BindView(R.id.tabView)
     TabView tabView;
@@ -82,27 +96,74 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     protected void initWidget() {
         super.initWidget();
         initTableView();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    private void quanxian(){
+        Acp.getInstance(this).request(new AcpOptions.Builder()
+                        .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                Manifest.permission.ACCESS_WIFI_STATE,
+                                Manifest.permission.CHANGE_WIFI_STATE
+
+                           )
+                        /*以下为自定义提示语、按钮文字
+                        .setDeniedMessage()
+                        .setDeniedCloseBtn()
+                        .setDeniedSettingBtn()
+                        .setRationalMessage()
+                        .setRationalBtn()*/
+                        .build(),
+                new AcpListener() {
+                    @Override
+                    public void onGranted() {
+                        mPresenter.doneUpdate();
+                        checkNotifySetting();
+                    }
+
+                    @Override
+                    public void onDenied(List<String> permissions) {
+                        ToastUtils.Speak("您未开启权限，可能会导致App使用异常");
+                      //  makeText(permissions.toString() + "权限拒绝");
+                    }
+                });
+
     }
 
     @Override
     protected void loadData() {
         super.loadData();
 
-        //   mPresenter.doneUpdate("1.0.0");
+      //  mPresenter.doneUpdate();
     }
 
     @Override
-    public void showUpdate(String rsp) {
-        /*
-        new AppUpdater.Builder()
-                .serUrl(mUrl)
-                .setFilename("AppUpdater.apk")
-                .build(getContext())
-                .setHttpManager(OkHttpManager.getInstance())//使用OkHttpClient实现下载，需依赖okhttp库
-                .start();
-        AppDialog.INSTANCE.dismissDialogFragment(getSupportFragmentManager());
+    public void showUpdate(HttpResponseBase<MainPresenter.UpdateInfo> datas) {
 
-         */
+        if (datas.code== Constans.API_RESULT_OK) {
+            if (AppUtils.verComparison(datas.data.getVersion(), AppUtils.getVerName(mContext))) {
+                AppDialogConfig config = new AppDialogConfig();
+                config.setTitle("版本更新")
+                        .setOk("升级")
+                        .setContent(datas.data.getMessage())
+                        .setOnClickOk(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                new AppUpdater.Builder()
+                                        .serUrl(datas.data.getMessage())
+                                        .setFilename("AppUpdater.apk")
+                                        .build(mContext)
+                                        .start();
+                                AppDialog.INSTANCE.dismissDialogFragment(getSupportFragmentManager());
+                            }
+                        });
+                AppDialog.INSTANCE.showDialogFragment(getSupportFragmentManager(), config);
+            }
+        }
     }
 
 
@@ -128,7 +189,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         tabView.setTabViewGravity(Gravity.TOP);
         tabView.setTabViewChild(tabViewChildList, getSupportFragmentManager());
         tabView.setTabViewDefaultPosition(0);
-
+        quanxian();
+        ToastUtils.Speak("欢迎使用EsayGo,祝大家抢票愉快");
 
     }
 
@@ -168,5 +230,64 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     }
 
+
+
+    /**
+     * 作者：CnPeng
+     * 时间：2018/7/12 上午8:02
+     * 功用：初始化点击事件
+     * 说明：
+     */
+    private void initClickListener() {
+        //CnPeng 2018/7/12 上午7:08 跳转到通知设置界面
+                try {
+                    // 根据isOpened结果，判断是否需要提醒用户跳转AppInfo页面，去打开App通知权限
+                    Intent intent = new Intent();
+                    intent.setAction(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                    //这种方案适用于 API 26, 即8.0（含8.0）以上可以用
+                    intent.putExtra(EXTRA_APP_PACKAGE, getPackageName());
+                    intent.putExtra(EXTRA_CHANNEL_ID, getApplicationInfo().uid);
+
+                    //这种方案适用于 API21——25，即 5.0——7.1 之间的版本可以使用
+                    intent.putExtra("app_package", getPackageName());
+                    intent.putExtra("app_uid", getApplicationInfo().uid);
+
+                    // 小米6 -MIUI9.6-8.0.0系统，是个特例，通知设置界面只能控制"允许使用通知圆点"——然而这个玩意并没有卵用，我想对雷布斯说：I'm not ok!!!
+                    //  if ("MI 6".equals(Build.MODEL)) {
+                    //      intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    //      Uri uri = Uri.fromParts("package", getPackageName(), null);
+                    //      intent.setData(uri);
+                    //      // intent.setAction("com.android.settings/.SubSettings");
+                    //  }
+                    startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    // 出现异常则跳转到应用设置界面：锤子坚果3——OC105 API25
+                    Intent intent = new Intent();
+
+                    //下面这种方案是直接跳转到当前应用的设置界面。
+                    //https://blog.csdn.net/ysy950803/article/details/71910806
+                    intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    Uri uri = Uri.fromParts("package", getPackageName(), null);
+                    intent.setData(uri);
+                    startActivity(intent);
+                }
+    }
+
+    /**
+     * 作者：CnPeng
+     * 时间：2018/7/12 上午9:02
+     * 功用：检查是否已经开启了通知权限
+     * 说明：
+     */
+    private void checkNotifySetting() {
+        NotificationManagerCompat manager = NotificationManagerCompat.from(this);
+        // areNotificationsEnabled方法的有效性官方只最低支持到API 19，低于19的仍可调用此方法不过只会返回true，即默认为用户已经开启了通知。
+        boolean isOpened = manager.areNotificationsEnabled();
+        if (!isOpened) {
+            ToastUtils.Speak("您还未开启通知权限，请先去开启");
+            initClickListener();
+        }
+    }
 
 }

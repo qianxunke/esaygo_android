@@ -29,6 +29,7 @@ import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.zaaach.citypicker.model.City;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -139,7 +140,10 @@ public class QueryActivity extends BaseActivity<QueryPresenter> implements Query
                 intent.putExtra("endCity", endCity);
                 intent.putExtra("goTime", goTime);
                 intent.putExtra("purpose_codes", purpose_codes);
-                intent.putExtra("trips", trainBeanList.get(position).getNum());
+                trainBeanList.get(position).setSelect(true);
+                TrainsList trainsList=new TrainsList();
+                trainsList.setBeanList(trainBeanList);
+                intent.putExtra("trainBeanList", trainsList);
                 startActivity(intent);
             }
         });
@@ -283,5 +287,17 @@ public class QueryActivity extends BaseActivity<QueryPresenter> implements Query
         //  mTextMonthDay.setText(String.valueOf(year));
     }
 
+
+    public static class TrainsList implements Serializable{
+        List<TrainBean> beanList;
+
+        public List<TrainBean> getBeanList() {
+            return beanList;
+        }
+
+        public void setBeanList(List<TrainBean> beanList) {
+            this.beanList = beanList;
+        }
+    }
 
 }
