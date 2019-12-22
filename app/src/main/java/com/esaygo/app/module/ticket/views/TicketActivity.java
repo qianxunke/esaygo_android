@@ -728,9 +728,9 @@ public class TicketActivity extends BaseActivity<TicketPresenter> implements Tic
 
             }
             helper.setText(R.id.tx_item_train_start_time, item.getStart_time() + "");
-            helper.setText(R.id.tx_item_train_start_station, StatonUtils.getStationFromCode(item.getFrom()) + "");
+            helper.setText(R.id.tx_item_train_start_station, StatonUtils.getStationFromCode(item.getFind_from()) + "");
             helper.setText(R.id.tx_item_train_end_time, item.getEnd_time() + "");
-            helper.setText(R.id.tx_item_train_end_station, StatonUtils.getStationFromCode(item.getTo()) + "");
+            helper.setText(R.id.tx_item_train_end_station, StatonUtils.getStationFromCode(item.getFind_to()) + "");
             helper.setText(R.id.tx_item_train_number, item.getNum() + "");
 
             ImageView selectImageview = helper.getView(R.id.trip_iv_choose);

@@ -89,7 +89,7 @@ public class RegisterActivity extends BaseActivity<LoginPresenter> implements Lo
                     startActivity(new Intent(mContext, MainActivity.class));
                     finish();
                 }
-            }, 200);
+            }, 100);
 
         } else {
 
@@ -145,11 +145,13 @@ public class RegisterActivity extends BaseActivity<LoginPresenter> implements Lo
                     return;
                 }
                 if (et_invite_code.getText().toString().isEmpty()) {
-                    ToastUtils.showWarningToast("请输入您的昵称，方便称号");
+                    ToastUtils.showWarningToast("请输入您的昵称，方便称乎");
+                    ToastUtils.Speak("请输入您的昵称，方便称乎");
                     return;
                 }
                 if (et_code.getText().toString().isEmpty()) {
                     ToastUtils.showWarningToast("请先输入验证码");
+                    ToastUtils.Speak("请先输入验证码");
                     return;
                 }
                 promptDialog.showLoading(getString(R.string.logging_in));
@@ -231,6 +233,7 @@ public class RegisterActivity extends BaseActivity<LoginPresenter> implements Lo
             boolean isMatch = m.matches();
             if (!isMatch) {
                 ToastUtils.showWarningToast("请填入正确的手机号");
+                ToastUtils.Speak("请填入正确的手机号");
             }
             return isMatch;
         }

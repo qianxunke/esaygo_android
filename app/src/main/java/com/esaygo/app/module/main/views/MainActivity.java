@@ -33,6 +33,7 @@ import com.esaygo.app.module.main.bean.FeatureItem;
 import com.esaygo.app.module.main.contract.MainContract;
 import com.esaygo.app.module.main.presenter.MainPresenter;
 import com.esaygo.app.module.main.views.adapter.FeatureAdapter;
+import com.esaygo.app.module.user.UserModel;
 import com.esaygo.app.rx.RxBus;
 import com.esaygo.app.rx.event.Event;
 import com.esaygo.app.utils.AppUtils;
@@ -190,7 +191,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         tabView.setTabViewChild(tabViewChildList, getSupportFragmentManager());
         tabView.setTabViewDefaultPosition(0);
         quanxian();
-        ToastUtils.Speak("欢迎使用EsayGo,祝大家抢票愉快");
+        ToastUtils.Speak("您好，"+ UserModel.getCurrentUser().getNike_name()+",欢迎使用EsayGo,祝您抢票愉快");
 
     }
 

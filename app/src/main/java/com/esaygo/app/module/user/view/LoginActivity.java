@@ -96,7 +96,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                         startActivity(new Intent(mContext, MainActivity.class));
                         finish();
                     }
-                },200);
+                },100);
 
         } else {
 
@@ -108,8 +108,10 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     public void showSendCodeResult(HttpResponseBase<Object> datas) {
         if (datas.code == Constans.API_RESULT_OK) {
             ToastUtils.showSucessToast(datas.message);
+            ToastUtils.Speak(datas.message);
         } else {
             ToastUtils.showErrorToast(datas.message);
+            ToastUtils.Speak(datas.message);
         }
     }
 
@@ -136,6 +138,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                 }
                 if(et_code.getText().toString().isEmpty()){
                     ToastUtils.showWarningToast("请先输入验证码");
+                    ToastUtils.Speak("请先输入验证码");
                     return;
                 }
                 promptDialog.showLoading(getString(R.string.logging_in));
@@ -211,6 +214,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
             boolean isMatch = m.matches();
             if (!isMatch) {
                 ToastUtils.showWarningToast("请填入正确的手机号");
+                ToastUtils.Speak("请填入正确的手机号");
             }
             return isMatch;
         }
