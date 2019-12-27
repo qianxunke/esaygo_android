@@ -35,7 +35,6 @@ import com.zaaach.citypicker.model.City;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 
@@ -648,13 +647,42 @@ public class TicketActivity extends BaseActivity<TicketPresenter> implements Tic
 
         taskDetails.setTask_passenger(task_passengers);
 
-        promptDialog.showLoading("提交中...");
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mPresenter.doneAddTask(taskDetails);
-            }
-        }, Constans.TIME_1500);
+        NiceDialog.init()
+                .setLayoutId(R.layout.dialog_custom_select)
+                .setConvertListener(new ViewConvertListener() {
+                    @Override
+                    public void convertView(final ViewHolder holder, final BaseNiceDialog dialog) {
+
+                        holder.setOnClickListener(R.id.tx_cancel, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                        holder.setText(R.id.tx_message,"您确定提交了吗？（温馨提示，如果您选择的日期包含还未放票的日期，到放票前半小时，EsayGo会提醒您，到时可以选择本地抢票，成功率更高哦）");
+
+                        holder.setOnClickListener(R.id.tx_ok, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog.dismiss();
+                                promptDialog.showLoading("提交中...");
+                                mHandler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        mPresenter.doneAddTask(taskDetails);
+                                    }
+                                }, Constans.TIME_1500);
+
+
+                            }
+                        });
+
+                    }
+                })
+                .setMargin(16)
+                .setOutCancel(false)
+                .show(getSupportFragmentManager());
     }
 
     private void showSelectTrain(){

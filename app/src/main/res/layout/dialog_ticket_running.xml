@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/dp8"
+        android:layout_marginTop="@dimen/dp4"
+        android:layout_marginEnd="@dimen/dp8"
+        android:layout_marginBottom="@dimen/dp4"
+        app:cardCornerRadius="@dimen/dp8"
+        app:cardElevation="1dp"
+        app:contentPadding="@dimen/dp5">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.esaygo.app.utils.views.wave.MultiWaveHeader
+                android:id="@+id/waveHeader"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp65"
+                android:scaleY="1"
+                app:mwhCloseColor="@color/main_color"
+                app:mwhColorAlpha="0.45"
+                app:mwhCornerRadius="@dimen/dp10"
+                app:mwhGradientAngle="45"
+                app:mwhProgress="1"
+                app:mwhStartColor="@color/white"
+                app:mwhVelocity="1"
+                app:mwhWaveHeight="30dp"
+                app:mwhWaves="MultiWave" />
+
+            <LinearLayout
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tx_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="center"
+                    android:text="正在为您抢票中..."
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/xrecleview_order_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="@dimen/dp30"
+                    android:layout_marginBottom="@dimen/dp4"
+                    android:background="@color/bg_basee"
+                    android:scrollbarSize="@dimen/dp3"
+                    android:scrollbarThumbVertical="@color/blue"
+                    android:scrollbars="vertical">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="100dp"
+                    android:background="@color/text_c4" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+
+                    <TextView
+                        android:id="@+id/tx_ok"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:text="切换云端抢票"
+                        android:textColor="@color/text_66"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+            <com.esaygo.app.utils.views.wave.MultiWaveHeader
+                android:id="@+id/waveHeader_buttom"
+                android:layout_width="match_parent"
+                android:layout_marginTop="380dp"
+                android:layout_height="@dimen/dp60"
+                android:scaleY="-1"
+                app:mwhCloseColor="@color/main_color"
+                app:mwhColorAlpha="0.45"
+                app:mwhCornerRadius="@dimen/dp10"
+                app:mwhGradientAngle="45"
+                app:mwhProgress="1"
+                app:mwhStartColor="@color/white"
+                app:mwhVelocity="1"
+                app:mwhWaveHeight="30dp"
+                app:mwhWaves="MultiWave" />
+        </FrameLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

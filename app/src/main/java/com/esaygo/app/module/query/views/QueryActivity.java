@@ -112,8 +112,6 @@ public class QueryActivity extends BaseActivity<QueryPresenter> implements Query
         super.initWidget();
         ImmersionBar.with(this).init();
         trainBeanList = new ArrayList<>();
-        //  refreshLayout.setRefreshHeader(new ClassicsHeader(this));
-        // refreshLayout.setRefreshFooter(new ClassicsFooter(this));
         refreshLayout.setEnableLoadMore(false);
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
@@ -197,6 +195,9 @@ public class QueryActivity extends BaseActivity<QueryPresenter> implements Query
     public void showQuery(HttpResponseBase<List<TrainBean>> data) {
         refreshLayout.finishRefresh();
         refreshLayout.finishLoadMore();
+        if(trainBeanList==null){
+            trainBeanList=new ArrayList<>();
+        }
         trainBeanList.clear();
         trainAdapter.notifyDataSetChanged();
         if (data.code == API_RESULT_OK) {

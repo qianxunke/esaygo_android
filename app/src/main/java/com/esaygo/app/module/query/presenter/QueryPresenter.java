@@ -68,9 +68,10 @@ public class QueryPresenter extends RxPresenter<QueryContract.View> implements Q
                         });
 
         */
-        OkGo.<String>get("https://kyfw.12306.cn/otn/leftTicket/init").execute(new StringCallback() {
-            @Override
-            public void onSuccess(Response<String> response) {
+       try {
+           OkGo.<String>get("https://kyfw.12306.cn/otn/leftTicket/init").execute(new StringCallback() {
+               @Override
+               public void onSuccess(Response<String> response) {
 
                /* HttpUrl httpUrl = HttpUrl.parse("https://kyfw.12306.cn/otn/leftTicket/init");
                 Cookie.Builder builder = new Cookie.Builder();
@@ -78,38 +79,51 @@ public class QueryPresenter extends RxPresenter<QueryContract.View> implements Q
                 CookieStore cookieStore = OkGo.getInstance().getCookieJar().getCookieStore();
                 cookieStore.saveCookie(httpUrl, cookie);
                 */
-                HttpHeaders httpHeaders = new HttpHeaders();
-                httpHeaders.put("Host", "kyfw.12306.cn");
-               // httpHeaders.put("User-Agent",);
-                httpHeaders.put("Content-Type","application/json;charset=UTF-8");
-                httpHeaders.put("Cookie",response.headers().toMultimap().get("Set-Cookie").toString());
-                httpHeaders.put("X-Cdn-Src-Port",response.headers().get("X-Cdn-Src-Port"));
-                httpHeaders.put("Connection","keep-alive");
-              //  httpHeaders.put("");
-                OkGo.<String>get("https://kyfw.12306.cn/otn/leftTicket/queryZ?leftTicketDTO.train_date=" + date + "&leftTicketDTO.from_station=" + form + "&leftTicketDTO.to_station=" + to + "&purpose_codes=" + purpose_codes).headers(httpHeaders)
-                        .execute(new StringCallback() {
-                            @Override
-                            public void onSuccess(Response<String> response) {
-                                try {
-                                    if (response.code() == 200) {
-                                        HttpResponseBase<List<TrainBean>> o = new HttpResponseBase<>();
-                                        o.code = 200;
-                                        o.message="ok";
-                                        o.data = formatQueryMessage(response.body());
-                                        mView.showQuery(o);
-                                    } else {
-                                        mView.showError("服务器维护中...");
-                                    }
+                   HttpHeaders httpHeaders = new HttpHeaders();
+                   httpHeaders.put("Host", "kyfw.12306.cn");
+                   // httpHeaders.put("User-Agent",);
+                   httpHeaders.put("Content-Type", "application/json;charset=UTF-8");
+                   httpHeaders.put("Cookie", response.headers().toMultimap().get("Set-Cookie").toString());
+                   httpHeaders.put("X-Cdn-Src-Port", response.headers().get("X-Cdn-Src-Port"));
+                   httpHeaders.put("Connection", "keep-alive");
+                   //  httpHeaders.put("");
+                   String []splite=response.body().split("\n");
+                   String Query="";
+                   for (int i=0;i<splite.length;i++){
+                       if (splite[i].contains("CLeftTicketUrl")){
+                           Query=splite[i].substring(splite[i].indexOf("'")+1,splite[i].length()-2);
+                       }
+                   }
+                   if(Query.isEmpty()){
+                       Query="leftTicket/query";
+                   }
+                   OkGo.<String>get("https://kyfw.12306.cn/otn/"+Query+"?leftTicketDTO.train_date=" + date + "&leftTicketDTO.from_station=" + form + "&leftTicketDTO.to_station=" + to + "&purpose_codes=" + purpose_codes).headers(httpHeaders)
+                           .execute(new StringCallback() {
+                               @Override
+                               public void onSuccess(Response<String> response) {
+                                   try {
+                                       if (response.code() == 200) {
+                                           HttpResponseBase<List<TrainBean>> o = new HttpResponseBase<>();
+                                           o.code = 200;
+                                           o.message = "ok";
+                                           o.data = formatQueryMessage(response.body());
+                                           mView.showQuery(o);
+                                       } else {
+                                           mView.showError("服务器维护中...");
+                                       }
 
-                                } catch (Exception e) {
-                                 //   mView.showError(e.toString());
-                                }
+                                   } catch (Exception e) {
+                                       //   mView.showError(e.toString());
+                                   }
 
-                            }
-                        });
+                               }
+                           });
 
-            }
-        });
+               }
+           });
+       }catch (Exception e){
+           ToastUtils.showWarningToast("服务器繁忙，稍后再试");
+       }
       //  addSubscribe(subscriber);
     }
 

@@ -153,8 +153,10 @@ public class MultiSelectActivity extends BaseActivity<SplashPresenter> implement
         if (selectDates == null) {
             selectDates = "";
         }
+        String month=calendar.getMonth()<10?("0"+calendar.getMonth()):(calendar.getMonth()+"");
 
-        String d = calendar.getYear() + "-" + calendar.getMonth() + "-" + calendar.getDay();
+        String day=calendar.getDay()<10?("0"+calendar.getDay()):(calendar.getDay()+"");
+        String d = calendar.getYear() + "-" + month + "-" + day;
         String arr[] = selectDates.split(",");
         boolean isHave = false;
         for (int i = 0; i < arr.length; i++) {

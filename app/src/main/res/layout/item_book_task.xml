@@ -1,102 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="@dimen/dp110"
+    android:layout_marginStart="@dimen/dp10"
+    android:layout_marginTop="@dimen/dp4"
+    android:layout_marginEnd="@dimen/dp10"
+    android:layout_marginBottom="@dimen/dp4"
+    app:cardCornerRadius="@dimen/dp5"
+    app:cardElevation="0dp"
+   >
 
-    <androidx.cardview.widget.CardView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp16"
-        android:layout_marginTop="@dimen/dp4"
-        android:layout_marginEnd="@dimen/dp16"
-        android:layout_marginBottom="@dimen/dp4"
-        app:cardCornerRadius="@dimen/dp8"
-        app:cardElevation="1dp"
-        app:contentPadding="@dimen/dp10">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
+            android:layout_height="@dimen/dp50"
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp50"
-                android:orientation="horizontal">
+                android:layout_width="@dimen/dp0"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="@dimen/dp0"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                <TextView
+                    android:layout_marginStart="@dimen/dp10"
+                    android:id="@+id/tx_station_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:text="北京 - 上海"
+                    android:textColor="@color/text_33"
+                    android:textSize="@dimen/sp_13"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/tx_station_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp5"
-                        android:text="北京 - 上海"
-                        android:textColor="@color/text_33"
-                        android:textSize="@dimen/sp_13"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tx_checi"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp3"
-                        android:text=" k79,k94"
-                        android:textColor="@color/text_66"
-                        android:textSize="@dimen/sp_10" />
+                <TextView
+                    android:id="@+id/tx_checi"
+                    android:layout_marginStart="@dimen/dp10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp3"
+                    android:text=" k79,k94"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/sp_11" />
 
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="@dimen/dp100"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tx_status"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="end"
-                        android:text="抢票中"
-                        android:textColor="@color/green_pressed"
-                        android:textSize="@dimen/sp_11" />
-
-                    <TextView
-                        android:id="@+id/tx_action"
-                        android:layout_width="@dimen/dp60"
-                        android:layout_height="@dimen/dp25"
-                        android:layout_gravity="end"
-                        android:layout_marginTop="@dimen/dp2"
-                        android:background="@drawable/bg_bianyuan"
-                        android:gravity="center"
-                        android:text="取消抢票"
-                        android:textColor="@color/main_color"
-                        android:textSize="@dimen/sp_11" />
-
-                </LinearLayout>
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/tx_miaoshu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp10"
-                android:text="09-29出发 乘车人：王芳平"
-                android:textColor="@color/text_66"
-                android:textSize="@dimen/sp_12" />
+            <LinearLayout
+                android:layout_width="@dimen/dp100"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/tx_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="抢票中"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:layout_marginEnd="@dimen/dp8"
+                    android:textColor="@color/green_pressed"
+                    android:textSize="@dimen/sp_12" />
+
+
+            </LinearLayout>
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/tx_miaoshu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:text="09-29出发 乘车人：王芳平"
+            android:layout_marginStart="@dimen/dp10"
+            android:textColor="@color/text_66"
+            android:textSize="@dimen/sp_12" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tx_action"
+                android:layout_width="@dimen/dp60"
+                android:layout_height="@dimen/dp30"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/dp2"
+                android:background="@drawable/bg_yuanjiao_input"
+                android:gravity="center"
+                android:text="取消抢票"
+                android:layout_marginBottom="@dimen/dp5"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/dp100"
+                android:textColor="@color/text_66"
+                android:textSize="@dimen/sp_11" />
+            <TextView
+                android:id="@+id/tx_local_ticket"
+                android:layout_width="@dimen/dp60"
+                android:layout_height="@dimen/dp30"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/dp2"
+                android:background="@drawable/bg_bianyuan"
+                android:layout_marginEnd="@dimen/dp5"
+                android:gravity="center"
+                android:text="本地抢票"
+                android:layout_marginBottom="@dimen/dp5"
+                android:layout_alignParentEnd="true"
+                android:textColor="@color/main_color"
+                android:textSize="@dimen/sp_11" />
 
-    </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+
+    </LinearLayout>
 
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/tx_massage_contxt"
+    android:layout_marginStart="@dimen/dp8"
+    android:layout_marginEnd="@dimen/dp8"
+    android:layout_marginTop="@dimen/dp3"
+    android:layout_marginBottom="@dimen/dp2"
+    android:textSize="@dimen/sp_12"
+    android:textColor="@color/blue"
+    android:text="登陆中..."
+    android:layout_height="wrap_content">
+
+</TextView>

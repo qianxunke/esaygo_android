@@ -20,13 +20,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/bg_basee"
-        android:clipChildren="false"
-        android:focusable="false"
+        android:clipChildren="true"
+        android:focusable="true"
         app:srlAccentColor="@color/text_99">
 
-        <com.scwang.smart.refresh.header.ClassicsHeader
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -63,9 +60,5 @@
             </RelativeLayout>
 
         </FrameLayout>
-
-        <com.scwang.smart.refresh.footer.ClassicsFooter
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
     </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 </LinearLayout>

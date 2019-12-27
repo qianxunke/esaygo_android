@@ -134,6 +134,7 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:background="#f2f2f2">
 
             <androidx.cardview.widget.CardView
@@ -160,11 +161,12 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="火车票抢票进行中..."
+                            android:gravity="center"
+                            android:text="EsayGo已支持本地超高速抢票和云极速抢票"
                             android:textColor="@color/main_color"
-                            android:textSize="@dimen/sp_14" />
+                            android:textSize="@dimen/sp_12" />
 
                     </LinearLayout>
 
@@ -182,8 +184,9 @@
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
                             android:text="北京"
+                            android:textStyle="bold"
                             android:textColor="@color/black_80"
-                            android:textSize="@dimen/sp_16" />
+                            android:textSize="@dimen/sp_15" />
 
                         <ImageView
                             android:id="@+id/im_address_change"
@@ -199,8 +202,9 @@
                             android:layout_weight="1"
                             android:gravity="end"
                             android:text="上海"
+                            android:textStyle="bold"
                             android:textColor="@color/black_80"
-                            android:textSize="@dimen/sp_16" />
+                            android:textSize="@dimen/sp_15" />
                     </LinearLayout>
 
                     <View
@@ -219,7 +223,8 @@
                         android:layout_marginTop="@dimen/dp10"
                         android:gravity="end"
                         android:text="2019年12月19日"
-                        android:textColor="@color/black_80"
+                        android:textColor="@color/blue"
+                        android:textStyle="bold"
                         android:textSize="@dimen/sp_16" />
 
                     <View
@@ -291,6 +296,18 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginEnd="@dimen/dp20"
+                android:gravity="center"
+                android:textSize="@dimen/sp_13"
+                android:layout_marginTop="@dimen/dp20"
+                android:textColor="@color/black_80"
+                android:text="EsayGo抢票友情提示:\n火车票首次放票时最好使用本地超高速抢票，本地抢票支持自定义刷票速率，最低可支持500毫秒一次。如果首次未抢到，EsayGo会未您云端监控，当有票时，即刻为您下单。当然，您也可以不选择本地抢票，EsayGo也会自行为您抢票的。"
+                android:layout_height="wrap_content"/>
+
 
         </LinearLayout>
     </com.haibin.calendarview.CalendarLayout>
