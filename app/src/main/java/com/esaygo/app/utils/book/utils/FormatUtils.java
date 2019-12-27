@@ -171,7 +171,6 @@ public class FormatUtils {
 			return msg;
 		} else {
 			logger.info("订单信息查询失败，可能该订单已完成，请登录12306查看，若不存在未完成订单，请重启本系统");
-			System.exit(0);
 		}
 		return null;
 	}

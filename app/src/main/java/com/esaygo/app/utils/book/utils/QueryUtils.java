@@ -54,7 +54,6 @@ public class QueryUtils {
 				trainBeanList = QueryPresenter.formatQueryMessage(response.body().string());
 			} else {
 				logger.info("查询列车信息失败，请检查输入条件...");
-				//System.exit(0);
 			}
 		} catch (Exception e) {
 			logger.info("查询列车信息失败，错误信息:[" + e.toString() + "]");

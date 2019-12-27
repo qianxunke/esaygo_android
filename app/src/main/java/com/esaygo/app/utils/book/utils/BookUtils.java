@@ -285,7 +285,6 @@ public class BookUtils {
                     return bookResult;
                 } else {
                     Log.e(Tag, "订单信息错误...");
-                    System.exit(0);
                 }
 
             }

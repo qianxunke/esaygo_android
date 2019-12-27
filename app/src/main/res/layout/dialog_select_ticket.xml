@@ -20,6 +20,8 @@
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:paddingStart="@dimen/dp15"
+            android:paddingEnd="@dimen/dp15"
             android:orientation="vertical">
 
             <TextView

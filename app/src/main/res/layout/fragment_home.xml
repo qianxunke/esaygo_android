@@ -305,7 +305,7 @@
                 android:textSize="@dimen/sp_13"
                 android:layout_marginTop="@dimen/dp20"
                 android:textColor="@color/black_80"
-                android:text="EsayGo抢票友情提示:\n火车票首次放票时最好使用本地超高速抢票，本地抢票支持自定义刷票速率，最低可支持500毫秒一次。如果首次未抢到，EsayGo会未您云端监控，当有票时，即刻为您下单。当然，您也可以不选择本地抢票，EsayGo也会自行为您抢票的。"
+                android:text="EsayGo抢票友情提示:\n火车票首次放票时最好使用本地超高速抢票，本地抢票支持自定义刷票速率，最低可支持500毫秒一次。如果首次未抢到，EsayGo会为您云端监控，当有票时，即刻为您下单。当然，您也可以不选择本地抢票，EsayGo也会自行为您云端抢票的。"
                 android:layout_height="wrap_content"/>
 
 

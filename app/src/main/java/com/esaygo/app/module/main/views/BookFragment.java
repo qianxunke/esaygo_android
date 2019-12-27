@@ -847,7 +847,7 @@ public class BookFragment extends ImBaseFragment {
                     massage.obj = "任务出错....请您重新开启";
                     myHandler.sendMessage(massage);
                 }
-            } catch (InterruptedException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

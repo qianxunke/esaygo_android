@@ -59,6 +59,8 @@
                     android:id="@+id/xrecleview_order_list"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
+                    android:paddingStart="@dimen/dp10"
+                    android:paddingEnd="@dimen/dp10"
                     android:layout_marginTop="@dimen/dp30"
                     android:layout_marginBottom="@dimen/dp4"
                     android:background="@color/bg_basee"
