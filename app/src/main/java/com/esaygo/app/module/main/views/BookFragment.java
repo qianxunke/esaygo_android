@@ -727,6 +727,10 @@ public class BookFragment extends ImBaseFragment {
                                                     isOk = true;
                                                     break;
                                                 }
+                                                massage = new Message();
+                                                massage.what = 1;
+                                                massage.obj = "订单请求提交被拒绝，准备重提交...";
+                                                myHandler.sendMessage(massage);
                                                 Thread.sleep(2000);
                                             }
                                             tijiao--;
